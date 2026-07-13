@@ -1,0 +1,427 @@
+# Quantized Few-Shot Calibration
+
+This repository contains the code for the NLP final project:
+
+**Does Quantization Change Few-Shot Prompting's Effect on Calibration?**
+
+## Project Overview
+
+This project studies whether 4-bit quantization changes how few-shot prompting affects a language model's accuracy and calibration.
+
+We evaluate the same instruction-tuned language model in two conditions:
+
+1. Higher-precision inference
+2. 4-bit quantized inference
+
+The model performs binary sentiment classification on SST-2 using:
+
+- 0-shot prompting
+- 1-shot prompting
+- 2-shot prompting
+- 4-shot prompting
+- 8-shot prompting
+
+For each prediction, we record:
+
+- the true label;
+- the predicted label;
+- the probability assigned to each label;
+- the model's confidence;
+- whether the prediction was correct.
+
+We compare the two precision conditions using accuracy, Expected Calibration Error (ECE), and reliability diagrams.
+
+## Research Question
+
+Does 4-bit quantization change the effect of increasing the number of in-context demonstrations on model calibration?
+
+More specifically, we examine whether quantization changes:
+
+- classification accuracy;
+- confidence reliability;
+- the relationship between shot count and calibration.
+
+## Dataset
+
+We use SST-2, the binary version of the Stanford Sentiment Treebank.
+
+Each example contains a movie-review sentence labeled as:
+
+- `negative`
+- `positive`
+
+The training split is used to construct:
+
+- a fixed prompt-development subset;
+- a demonstration pool for few-shot examples.
+
+The labeled validation split is used as the final evaluation set.
+
+Evaluation examples are never used as demonstrations or for prompt development.
+
+## Experimental Design
+
+The experiment compares:
+
+| Condition | Values |
+|---|---|
+| Model | `Qwen/Qwen2.5-3B-Instruct` |
+| Precision | BF16, 4-bit NF4 |
+| Shot count | 0, 1, 2, 4, 8 |
+| Task | Binary sentiment classification |
+| Labels | `positive`, `negative` |
+| Demonstration seeds | 0, 1, 2, 3, 4, 5 |
+
+The same model checkpoint, tokenizer, prompts, demonstrations, evaluation examples, batching procedure, and scoring method are used for both precision conditions.
+
+The only intended experimental difference is the numerical representation of the model weights.
+
+## Model
+
+The experiment uses one model checkpoint:
+
+```text
+Qwen/Qwen2.5-3B-Instruct
+```
+
+The same checkpoint is evaluated in two conditions:
+
+1. Higher precision – unquantized BF16 inference
+2. Quantized – 4-bit NF4 weights with BF16 computation and double quantization disabled
+
+The model, tokenizer, prompts, demonstrations, evaluation examples, and scoring procedure are identical across both conditions.
+
+The exact model revision, tokenizer revision, package versions, GPU configuration, and memory usage will be recorded after the pilot experiment.
+
+## Precision Configurations
+
+### Higher Precision
+
+Configuration file:
+
+```text
+configs/high_precision.yaml
+```
+
+Main settings:
+
+```yaml
+model:
+  name: Qwen/Qwen2.5-3B-Instruct
+  revision: null
+
+precision:
+  condition_name: bf16
+  quantized: false
+  torch_dtype: bfloat16
+```
+
+### 4-bit Quantized
+
+Configuration file:
+
+```text
+configs/quantized_4bit.yaml
+```
+
+Main settings:
+
+```yaml
+model:
+  name: Qwen/Qwen2.5-3B-Instruct
+  revision: null
+
+precision:
+  condition_name: 4bit_nf4
+  quantized: true
+  load_in_4bit: true
+  quantization_type: nf4
+  compute_dtype: bfloat16
+  use_double_quantization: false
+```
+
+The exact revision will be pinned after the pilot experiment.
+
+## SST-2 Data Protocol
+
+A fixed stratified subset of 200 training examples is reserved for prompt development and debugging:
+
+- 100 negative examples
+- 100 positive examples
+
+These examples are excluded from the demonstration pool.
+
+The demonstration pool contains all remaining training examples.
+
+The full labeled validation split is used as the final evaluation set.
+
+The validation labels are not used for:
+
+- prompt development;
+- demonstration selection;
+- model selection;
+- configuration tuning.
+
+## Demonstration Construction
+
+The experiment uses shot counts:
+
+```text
+0, 1, 2, 4, 8
+```
+
+For each seed, eight demonstrations are sampled from the demonstration pool:
+
+- four positive;
+- four negative.
+
+The demonstration sets are nested. For a given seed:
+
+- the 1-shot prompt uses the first demonstration;
+- the 2-shot prompt uses the first two;
+- the 4-shot prompt uses the first four;
+- the 8-shot prompt uses all eight.
+
+The 2-, 4-, and 8-shot prefixes are class-balanced.
+
+The first demonstration's label alternates across seeds so that the 1-shot condition does not consistently favor one class.
+
+The same demonstration identities and ordering are used in both precision conditions.
+
+## Prompt Format
+
+Each prompt contains:
+
+1. a task instruction;
+2. zero or more labeled demonstrations;
+3. one unlabeled evaluation sentence.
+
+Example:
+
+```text
+Classify the sentiment of each movie-review sentence as positive or negative.
+
+Review: The movie was funny and beautifully acted.
+Sentiment: positive
+
+Review: The plot was dull and predictable.
+Sentiment:
+```
+
+The label verbalizers are:
+
+```text
+positive
+negative
+```
+
+Before running the full experiment, the tokenizer representation of both verbalizers must be verified.
+
+If a verbalizer contains multiple tokens, its score will be computed using the summed conditional log-probabilities of the complete token sequence.
+
+## Confidence Extraction
+
+The model does not generate a free-form answer or a self-reported confidence value.
+
+Instead, we obtain model scores for the two label verbalizers:
+
+- `positive`
+- `negative`
+
+The two scores are normalized using a restricted softmax.
+
+The label with the higher probability is selected as the prediction.
+
+The probability assigned to the selected label is used as the prediction confidence.
+
+## Evaluation Metrics
+
+### Accuracy
+
+Accuracy is the proportion of evaluation examples classified correctly.
+
+### Expected Calibration Error
+
+Expected Calibration Error measures the difference between prediction confidence and observed accuracy.
+
+Predictions are grouped into 10 equal-width confidence bins.
+
+A lower ECE indicates better calibration.
+
+### Reliability Diagrams
+
+Reliability diagrams compare:
+
+- mean confidence;
+- empirical accuracy.
+
+A well-calibrated model should remain close to the diagonal line.
+
+## Majority-Class Baseline
+
+The majority-class baseline always predicts the most frequent label in the SST-2 training split.
+
+Its confidence is set to the empirical training frequency of that label.
+
+The majority label and confidence are computed using the training split only.
+
+## Tools
+
+The project uses:
+
+- Python
+- PyTorch
+- Hugging Face Transformers
+- Hugging Face Datasets
+- bitsandbytes
+- NumPy
+- pandas
+- Matplotlib
+- PyYAML
+- pytest
+
+No paid language-model API is required.
+
+## Repository Structure
+
+```text
+quantized-few-shot-calibration/
+├── AGENTS.md
+├── README.md
+├── requirements.txt
+├── .gitignore
+├── configs/
+│   ├── high_precision.yaml
+│   └── quantized_4bit.yaml
+├── docs/
+│   └── experiment_spec.md
+├── project_docs/
+│   ├── final_project_instructions.pdf
+│   ├── project_proposal.pdf
+│   ├── example_final_report_1.pdf
+│   ├── example_final_report_2.pdf
+│   └── lectures/
+├── data/
+│   ├── processed/
+│   └── splits/
+├── src/
+│   ├── data.py
+│   ├── prompts.py
+│   ├── model.py
+│   ├── inference.py
+│   ├── metrics.py
+│   └── plots.py
+├── scripts/
+│   ├── prepare_sst2.py
+│   ├── run_pilot.py
+│   └── run_full_experiment.py
+├── results/
+│   ├── raw/
+│   ├── tables/
+│   └── figures/
+└── tests/
+```
+
+## Experimental Pipeline
+
+1. Load SST-2.
+2. Reserve the balanced prompt-development subset.
+3. Create the demonstration pool.
+4. Define the validation evaluation set.
+5. Compute the majority-class baseline.
+6. Create fixed demonstration selections for seeds 0 through 5.
+7. Build prompts for 0, 1, 2, 4, and 8 shots.
+8. Verify label-token verbalization.
+9. Load the model in BF16.
+10. Load the same model using 4-bit NF4 quantization.
+11. Extract label probabilities for every evaluation example.
+12. Save predictions and confidence values.
+13. Compute accuracy and ECE.
+14. Generate reliability diagrams, tables, and figures.
+15. Compare how shot count affects both precision conditions.
+
+## Pilot Experiment
+
+Before running the full experiment, the pipeline will be tested using:
+
+- approximately 20 SST-2 examples;
+- 0-shot and 2-shot prompts;
+- one demonstration selection;
+- both precision conditions.
+
+The pilot will verify that:
+
+- the model loads successfully;
+- BF16 inference works;
+- 4-bit quantization works;
+- label tokenization is handled correctly;
+- confidence extraction is correct;
+- predictions are saved in the expected format;
+- both conditions use identical prompts and examples.
+
+The full experiment will run only after the pilot passes.
+
+## Output Format
+
+Each prediction will be saved with fields similar to:
+
+```text
+model_name
+model_revision
+precision
+shot_count
+seed
+example_id
+true_label
+predicted_label
+negative_probability
+positive_probability
+confidence
+correct
+```
+
+The final repository will also contain:
+
+- aggregated result tables;
+- accuracy figures;
+- ECE figures;
+- reliability diagrams;
+- experimental configuration files;
+- reproducibility instructions.
+
+## Reproducibility
+
+The project will record:
+
+- exact model revision;
+- exact tokenizer revision;
+- package versions;
+- GPU type;
+- precision configuration;
+- demonstration identities and ordering;
+- random seeds;
+- prompts;
+- evaluation-example identifiers;
+- raw prediction outputs.
+
+Model weights, Hugging Face caches, virtual environments, secrets, and large temporary files will not be committed to the repository.
+
+## Status
+
+- [x] Research question defined
+- [x] Experimental design defined
+- [x] ACL paper skeleton prepared
+- [x] Model selected
+- [x] Higher-precision configuration defined
+- [x] 4-bit configuration defined
+- [ ] Model revision pinned
+- [ ] SST-2 data preparation implemented
+- [ ] Demonstration sets generated
+- [ ] Prompt construction implemented
+- [ ] Label tokenization validated
+- [ ] Pilot pipeline implemented
+- [ ] Pilot experiment completed
+- [ ] Full experiment completed
+- [ ] Results analyzed
+- [ ] Final figures generated
+- [ ] Reproducibility instructions finalized

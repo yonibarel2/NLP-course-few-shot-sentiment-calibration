@@ -1,0 +1,8 @@
+model:
+  name: Qwen/Qwen2.5-3B-Instruct
+  revision: null  # TODO: pin exact revision after the pilot
+
+precision:
+  condition_name: bf16
+  quantized: false
+  torch_dtype: bfloat16

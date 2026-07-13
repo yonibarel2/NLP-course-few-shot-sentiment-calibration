@@ -1,0 +1,11 @@
+model:
+  name: Qwen/Qwen2.5-3B-Instruct
+  revision: null  # TODO: pin exact revision after the pilot
+
+precision:
+  condition_name: 4bit_nf4
+  quantized: true
+  load_in_4bit: true
+  quantization_type: nf4
+  compute_dtype: bfloat16
+  use_double_quantization: false
