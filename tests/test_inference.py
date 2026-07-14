@@ -112,10 +112,10 @@ class FinalLogitsModel:
         attention_mask: torch.Tensor,
         logits_to_keep: int,
     ) -> object:
-        assert logits_to_keep == 1
+        assert logits_to_keep == 2
         assert input_ids.shape == attention_mask.shape
         self.batch_sizes.append(input_ids.shape[0])
-        logits = torch.zeros((input_ids.shape[0], 1, 5), dtype=torch.float32)
+        logits = torch.zeros((input_ids.shape[0], 2, 5), dtype=torch.float32)
         logits[:, 0, 2] = 1.0
         logits[:, 0, 3] = 3.0
         return type("Output", (), {"logits": logits})()

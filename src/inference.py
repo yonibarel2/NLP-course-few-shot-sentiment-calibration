@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-import math
 import inspect
+import math
+from collections import defaultdict
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from typing import Any
@@ -132,37 +133,35 @@ def _score_single_token_batch(
 ) -> list[LabelProbabilities]:
     """Use one prefix pass per prompt when both labels are single tokens."""
 
-    prefixes = [
-        candidates[0].input_ids[: candidates[0].prefix_token_count]
-        for candidates in grouped_candidates
-    ]
+    prefixes = [candidates[0].input_ids[:-1] for candidates in grouped_candidates]
     if any(
         candidate.input_ids[: candidate.prefix_token_count] != prefix
         for candidates, prefix in zip(grouped_candidates, prefixes, strict=True)
         for candidate in candidates
     ):
         raise ValueError("label candidates do not share an identical scoring prefix")
-    maximum_length = max(len(prefix) for prefix in prefixes)
-    input_ids = torch.full(
-        (len(prefixes), maximum_length), pad_token_id, dtype=torch.long
+    sequence_lengths = {
+        len(candidates[0].input_ids) for candidates in grouped_candidates
+    }
+    if len(sequence_lengths) != 1:
+        raise ValueError("single-token fast-path batch must use equal sequence lengths")
+    # Append one candidate token so the sequence shape matches the validated
+    # general scorer. The logit before it depends only on the shared prefix.
+    input_ids = torch.tensor(
+        [candidates[0].input_ids for candidates in grouped_candidates],
+        dtype=torch.long,
     )
-    attention_mask = torch.zeros_like(input_ids)
-    for row, prefix in enumerate(prefixes):
-        length = len(prefix)
-        input_ids[row, maximum_length - length :] = torch.tensor(
-            prefix, dtype=torch.long
-        )
-        attention_mask[row, maximum_length - length :] = 1
+    attention_mask = torch.ones_like(input_ids)
 
     forward_kwargs: dict[str, Any] = {
         "input_ids": input_ids.to(device),
         "attention_mask": attention_mask.to(device),
     }
     if "logits_to_keep" in inspect.signature(model.forward).parameters:
-        forward_kwargs["logits_to_keep"] = 1
+        forward_kwargs["logits_to_keep"] = 2
     with torch.inference_mode():
         outputs = model(**forward_kwargs)
-    final_logits = outputs.logits[:, -1, :].float()
+    final_logits = outputs.logits[:, -2, :].float()
 
     results: list[LabelProbabilities] = []
     for row, candidates in enumerate(grouped_candidates):
@@ -204,26 +203,36 @@ def score_prompts(
     if pad_token_id is None:
         raise ValueError("tokenizer must define pad_token_id")
 
-    all_results: list[LabelProbabilities] = []
-    for start in range(0, len(prompts), batch_size):
-        prompt_batch = prompts[start : start + batch_size]
-        grouped_candidates = [
-            prepare_verbalizer_candidates(tokenizer, prompt) for prompt in prompt_batch
-        ]
-        if all(
-            len(candidate.continuation_ids) == 1
-            for candidates in grouped_candidates
-            for candidate in candidates
-        ):
-            all_results.extend(
-                _score_single_token_batch(
+    all_candidates = [
+        prepare_verbalizer_candidates(tokenizer, prompt) for prompt in prompts
+    ]
+    if all(
+        len(candidate.continuation_ids) == 1
+        for candidates in all_candidates
+        for candidate in candidates
+    ):
+        indices_by_length: dict[int, list[int]] = defaultdict(list)
+        for index, candidates in enumerate(all_candidates):
+            indices_by_length[len(candidates[0].input_ids)].append(index)
+        ordered_results: list[LabelProbabilities | None] = [None] * len(prompts)
+        for indices in indices_by_length.values():
+            for start in range(0, len(indices), batch_size):
+                batch_indices = indices[start : start + batch_size]
+                batch_results = _score_single_token_batch(
                     model,
-                    grouped_candidates,
+                    [all_candidates[index] for index in batch_indices],
                     pad_token_id=int(pad_token_id),
                     device=device,
                 )
-            )
-            continue
+                for index, result in zip(batch_indices, batch_results, strict=True):
+                    ordered_results[index] = result
+        if any(result is None for result in ordered_results):
+            raise AssertionError("single-token scoring left an unfilled result")
+        return [result for result in ordered_results if result is not None]
+
+    all_results: list[LabelProbabilities] = []
+    for start in range(0, len(prompts), batch_size):
+        grouped_candidates = all_candidates[start : start + batch_size]
         flat_candidates = [
             candidate for candidates in grouped_candidates for candidate in candidates
         ]
