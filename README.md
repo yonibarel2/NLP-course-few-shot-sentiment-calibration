@@ -373,7 +373,6 @@ quantized-few-shot-calibration/
 ├── configs/                 # data, precision, and analysis settings
 ├── data/splits/             # deterministic split and demonstration manifests
 ├── docs/                    # experiment specification and result summaries
-├── report/                  # ACL LaTeX source and publication-quality figures
 ├── results/
 │   ├── figures/             # generated analysis figures
 │   └── tables/              # metrics, intervals, and run metadata
@@ -383,8 +382,9 @@ quantized-few-shot-calibration/
 ```
 
 Large raw predictions are deliberately retained outside Git under
-`results/raw/`. Local course documents and working instructions are also
-excluded from the submitted repository.
+`results/raw/`. The paper source and Overleaf package, course instructions,
+examples, lecture materials, and local working instructions are also retained
+locally and excluded from the submitted repository.
 
 ## Experimental Pipeline
 

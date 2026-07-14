@@ -25,9 +25,14 @@ results/raw/
 .DS_Store
 .vscode/settings.json
 
-# Local working instructions and course materials are not submission files.
+# Local paper, working instructions, and course materials are not submission files.
 AGENTS.md
-project_docs/
+/report/
+/project_docs/
+/lectures/
+/course_materials/
+/submission_materials/
 
-# Locally retained import/export archives.
+# Locally retained paper exports and import/export archives.
+/*.pdf
 /*.zip
