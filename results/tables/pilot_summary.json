@@ -1,0 +1,127 @@
+{
+  "conditions": [
+    {
+      "elapsed_seconds_including_model_load": 12.280679754912853,
+      "peak_gpu_memory_bytes": 9696847360,
+      "precision_condition": "bf16",
+      "quantized": false
+    },
+    {
+      "elapsed_seconds_including_model_load": 5.042960204184055,
+      "peak_gpu_memory_bytes": 5719465472,
+      "precision_condition": "4bit_nf4",
+      "quantized": true
+    }
+  ],
+  "hardware": {
+    "bf16_supported": true,
+    "compute_capability": "8.9",
+    "cuda_runtime": "12.8",
+    "driver_version": "550.127.08",
+    "name": "NVIDIA L40",
+    "total_memory_bytes": 47576711168
+  },
+  "inputs": {
+    "demonstration_manifest_sha256": "172a26675a4eb3ee426759345b01b0c13150a64156680f08e39cbeba25825862",
+    "split_manifest_sha256": "c1b612fd870c40923d58b5b31de230ef2a4003fe6497cdc6e001c2e8c1d200b8",
+    "tokenization_report_sha256": "14d4c139ce5b21fc8e569e5bb08e3043ab5fc6370adcbd9edbfe77cc33dba6df"
+  },
+  "metrics_for_pipeline_check_only": [
+    {
+      "accuracy": 0.95,
+      "demonstration_seed": null,
+      "ece_10_bins": 0.04746845364570618,
+      "num_examples": 20,
+      "precision_condition": "4bit_nf4",
+      "shot_count": 0
+    },
+    {
+      "accuracy": 0.95,
+      "demonstration_seed": 0,
+      "ece_10_bins": 0.03995879590511319,
+      "num_examples": 20,
+      "precision_condition": "4bit_nf4",
+      "shot_count": 2
+    },
+    {
+      "accuracy": 0.95,
+      "demonstration_seed": null,
+      "ece_10_bins": 0.056351065635681236,
+      "num_examples": 20,
+      "precision_condition": "bf16",
+      "shot_count": 0
+    },
+    {
+      "accuracy": 0.95,
+      "demonstration_seed": 0,
+      "ece_10_bins": 0.04943069517612464,
+      "num_examples": 20,
+      "precision_condition": "bf16",
+      "shot_count": 2
+    }
+  ],
+  "model": {
+    "name": "Qwen/Qwen2.5-3B-Instruct",
+    "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+    "tokenizer_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1"
+  },
+  "outputs": {
+    "prediction_sha256": "050c2a111b8bb62a0f6a19c85a418014f5eba8118e661bfad5bd967550a34d5e",
+    "predictions": "results/raw/pilot_predictions.jsonl"
+  },
+  "pilot": {
+    "batch_size": 8,
+    "demonstration_seed": 0,
+    "shot_counts": [
+      0,
+      2
+    ],
+    "total_predictions": 80,
+    "validation_example_identifiers": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "validation_examples": 20
+  },
+  "purpose": "pipeline validation only; not final experimental results",
+  "schema_version": 1,
+  "software": {
+    "packages": {
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.49.2",
+      "datasets": "5.0.0",
+      "huggingface-hub": "1.23.0",
+      "numpy": "2.1.2",
+      "pyyaml": "6.0.3",
+      "torch": "2.8.0+cu128",
+      "transformers": "5.13.1"
+    },
+    "python": "3.12.3"
+  },
+  "status": "passed",
+  "validation_checks": {
+    "full_sequence_verbalizer_scoring": true,
+    "identical_prompts_across_precision_conditions": true,
+    "predictions_match_larger_probability": true,
+    "probabilities_sum_to_one": true,
+    "required_output_fields_present": true
+  }
+}

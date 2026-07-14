@@ -91,7 +91,10 @@ The same checkpoint is evaluated in two conditions:
 
 The model, tokenizer, prompts, demonstrations, evaluation examples, and scoring procedure are identical across both conditions.
 
-The exact model revision, tokenizer revision, package versions, GPU configuration, and memory usage will be recorded after the pilot experiment.
+The pilot pinned both the model and tokenizer to revision
+`aa8e72537993ba99e69dfaafa59ed015b17504d1`. Exact package versions, GPU
+configuration, runtimes, and peak memory are recorded in
+`results/tables/pilot_summary.json`.
 
 ## Precision Configurations
 
@@ -108,7 +111,7 @@ Main settings:
 ```yaml
 model:
   name: Qwen/Qwen2.5-3B-Instruct
-  revision: null
+  revision: aa8e72537993ba99e69dfaafa59ed015b17504d1
 
 precision:
   condition_name: bf16
@@ -129,7 +132,7 @@ Main settings:
 ```yaml
 model:
   name: Qwen/Qwen2.5-3B-Instruct
-  revision: null
+  revision: aa8e72537993ba99e69dfaafa59ed015b17504d1
 
 precision:
   condition_name: 4bit_nf4
@@ -140,7 +143,7 @@ precision:
   use_double_quantization: false
 ```
 
-The exact revision will be pinned after the pilot experiment.
+Both configurations use the exact revision pinned by the successful pilot.
 
 ## SST-2 Data Protocol
 
@@ -271,8 +274,8 @@ produce the same single-token continuations:
 
 The implementation still records complete token sequences so that a future
 tokenizer change cannot silently introduce an incorrect single-token
-assumption. The model and tokenizer configuration revisions remain unpinned
-until the pilot, as required by the experiment specification.
+assumption. The successful pilot subsequently pinned the model and tokenizer
+configuration to that inspected revision.
 
 ## Confidence Extraction
 
@@ -451,7 +454,14 @@ is first needed for loading the model and running these two pilot inference
 conditions. Exact GPU, CUDA, runtime, and memory information will be recorded
 during the pilot before any full experiment is attempted.
 
-The full experiment will run only after the pilot passes.
+The pilot passed on an NVIDIA L40 using CUDA 12.8 and PyTorch 2.8.0. It
+produced 80 validated predictions: 20 examples times two shot conditions times
+two precision conditions. BF16 peak allocated GPU memory was approximately
+9.70 GB and 4-bit peak allocated memory was approximately 5.72 GB. Pilot
+metrics are stored only as pipeline checks and are not treated as final
+experimental results.
+
+The full experiment may now run because the pilot passed.
 
 ## Output Format
 
@@ -507,14 +517,14 @@ Model weights, Hugging Face caches, virtual environments, secrets, and large tem
 - [x] Model selected
 - [x] Higher-precision configuration defined
 - [x] 4-bit configuration defined
-- [ ] Model revision pinned
+- [x] Model revision pinned
 - [x] SST-2 data preparation implemented
 - [x] Majority-class baseline computed
 - [x] Demonstration sets generated
 - [x] Prompt construction implemented
 - [x] Label tokenization validated
 - [x] Pilot pipeline implemented
-- [ ] Pilot experiment completed
+- [x] Pilot experiment completed
 - [ ] Full experiment completed
 - [ ] Results analyzed
 - [ ] Final figures generated

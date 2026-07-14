@@ -1,6 +1,6 @@
 model:
   name: Qwen/Qwen2.5-3B-Instruct
-  revision: null  # TODO: pin exact revision after the pilot
+  revision: aa8e72537993ba99e69dfaafa59ed015b17504d1
 
 precision:
   condition_name: 4bit_nf4
