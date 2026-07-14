@@ -38,12 +38,12 @@ def _configure_style() -> None:
         {
             "font.family": "serif",
             "font.serif": ["Times New Roman", "Times", "DejaVu Serif"],
-            "font.size": 8.5,
-            "axes.labelsize": 8.5,
+            "font.size": 9,
+            "axes.labelsize": 9,
             "axes.titlesize": 9,
-            "legend.fontsize": 8,
-            "xtick.labelsize": 8,
-            "ytick.labelsize": 8,
+            "legend.fontsize": 8.5,
+            "xtick.labelsize": 8.5,
+            "ytick.labelsize": 8.5,
             "figure.dpi": 150,
             "savefig.bbox": "tight",
             "pdf.fonttype": 42,
@@ -53,7 +53,7 @@ def _configure_style() -> None:
 
 
 def _performance_figure(aggregates: list[dict[str, str]]) -> Path:
-    figure, axes = plt.subplots(1, 2, figsize=(7.05, 2.55))
+    figure, axes = plt.subplots(1, 2, figsize=(6.30, 2.45))
     settings = (
         ("mean_accuracy", "std_accuracy", "Accuracy", (0.80, 0.96)),
         ("mean_ece_10_bins", "std_ece_10_bins", "ECE (10 bins; lower is better)", (0.0, 0.15)),
@@ -88,7 +88,7 @@ def _performance_figure(aggregates: list[dict[str, str]]) -> Path:
 
 
 def _interaction_figure(interactions: list[dict[str, str]]) -> Path:
-    figure, axes = plt.subplots(1, 2, figsize=(7.05, 2.55))
+    figure, axes = plt.subplots(1, 2, figsize=(6.30, 2.45))
     for axis, metric, ylabel in (
         (axes[0], "accuracy", "Accuracy interaction"),
         (axes[1], "ece_10_bins", "ECE interaction"),
@@ -125,7 +125,7 @@ def _reliability_panel(
     figure, axes = plt.subplots(
         2,
         len(shots),
-        figsize=(7.05, 4.35 if len(shots) == 3 else 3.55),
+        figsize=(6.30, 4.15 if len(shots) == 3 else 3.45),
         sharex=True,
         sharey=True,
         squeeze=False,
