@@ -463,6 +463,20 @@ experimental results.
 
 The full experiment may now run because the pilot passed.
 
+Run the complete paired experiment with:
+
+```text
+python scripts/run_full_experiment.py
+```
+
+The full runner evaluates 43,600 predictions: 872 validation examples under
+both precision conditions, with 0-shot evaluated once and each nonzero shot
+count evaluated for all six demonstration seeds. It writes condition-level
+accuracy/ECE, means and sample standard deviations across seeds, paired
+4-bit-minus-BF16 gaps, pooled reliability-bin data for visualization, final
+CSV tables, and accuracy, ECE, gap, and reliability figures. Per-condition
+metrics remain separate; seed pooling is used only for reliability diagrams.
+
 ## Output Format
 
 Each prediction will be saved with fields similar to:
@@ -525,6 +539,7 @@ Model weights, Hugging Face caches, virtual environments, secrets, and large tem
 - [x] Label tokenization validated
 - [x] Pilot pipeline implemented
 - [x] Pilot experiment completed
+- [x] Full experiment pipeline implemented
 - [ ] Full experiment completed
 - [ ] Results analyzed
 - [ ] Final figures generated
