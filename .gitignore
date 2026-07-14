@@ -24,3 +24,10 @@ results/raw/
 *.log
 .DS_Store
 .vscode/settings.json
+
+# Local working instructions and course materials are not submission files.
+AGENTS.md
+project_docs/
+
+# Locally retained import/export archives.
+/*.zip

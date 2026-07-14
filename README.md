@@ -259,9 +259,9 @@ positive
 negative
 ```
 
-Before running the full experiment, the tokenizer representation of both verbalizers must be verified.
-
-If a verbalizer contains multiple tokens, its score will be computed using the summed conditional log-probabilities of the complete token sequence.
+Before the full experiment, we verified the tokenizer representation of both
+verbalizers. The scorer uses summed conditional log-probabilities for the
+complete token sequence whenever a verbalizer contains multiple tokens.
 
 The exact plain-text prompt construction and saved-prefix materialization are
 implemented in `src/prompts.py`. Tokenizer and chat-template handling remain a
@@ -368,41 +368,23 @@ No paid language-model API is required.
 
 ```text
 quantized-few-shot-calibration/
-├── AGENTS.md
-├── README.md
-├── requirements.txt
-├── .gitignore
-├── configs/
-│   ├── high_precision.yaml
-│   └── quantized_4bit.yaml
-├── docs/
-│   └── experiment_spec.md
-├── project_docs/
-│   ├── final_project_instructions.pdf
-│   ├── project_proposal.pdf
-│   ├── example_final_report_1.pdf
-│   ├── example_final_report_2.pdf
-│   └── lectures/
-├── data/
-│   ├── processed/
-│   └── splits/
-├── src/
-│   ├── data.py
-│   ├── prompts.py
-│   ├── model.py
-│   ├── inference.py
-│   ├── metrics.py
-│   └── plots.py
-├── scripts/
-│   ├── prepare_sst2.py
-│   ├── run_pilot.py
-│   └── run_full_experiment.py
+├── README.md                 # design, commands, results, and reproduction
+├── requirements.txt         # recorded runtime and analysis versions
+├── configs/                 # data, precision, and analysis settings
+├── data/splits/             # deterministic split and demonstration manifests
+├── docs/                    # experiment specification and result summaries
+├── report/                  # ACL LaTeX source and publication-quality figures
 ├── results/
-│   ├── raw/
-│   ├── tables/
-│   └── figures/
-└── tests/
+│   ├── figures/             # generated analysis figures
+│   └── tables/              # metrics, intervals, and run metadata
+├── scripts/                 # preparation, inference, analysis, and validation CLIs
+├── src/                     # data, prompting, inference, metrics, and reporting code
+└── tests/                   # deterministic and methodological tests
 ```
+
+Large raw predictions are deliberately retained outside Git under
+`results/raw/`. Local course documents and working instructions are also
+excluded from the submitted repository.
 
 ## Experimental Pipeline
 
@@ -424,7 +406,7 @@ quantized-few-shot-calibration/
 
 ## Pilot Experiment
 
-Before running the full experiment, the pipeline will be tested using:
+Before the full experiment, the fixed pilot used:
 
 - approximately 20 SST-2 examples;
 - 0-shot and 2-shot prompts;
@@ -454,7 +436,7 @@ from one shared-prefix forward pass. Both precision conditions use the same
 grouping and batch size (`8`). A general full-sequence fallback remains in
 place for any future multi-token verbalizer.
 
-The pilot will verify that:
+The pilot verified that:
 
 - the model loads successfully;
 - BF16 inference works;
@@ -465,9 +447,9 @@ The pilot will verify that:
 - both conditions use identical prompts and examples.
 
 All preparation and tokenizer-inspection steps are CPU-only. A BF16-capable GPU
-is first needed for loading the model and running these two pilot inference
-conditions. Exact GPU, CUDA, runtime, and memory information will be recorded
-during the pilot before any full experiment is attempted.
+is needed only for loading the model and running the two inference conditions.
+The pilot recorded exact GPU, CUDA, runtime, and memory information before the
+full experiment was attempted.
 
 The pilot passed on an NVIDIA L40 using CUDA 12.8 and PyTorch 2.8.0. It
 produced 80 validated predictions: 20 examples times two shot conditions times
@@ -585,7 +567,8 @@ The completed experiment records:
 - evaluation-example identifiers;
 - raw prediction outputs.
 
-Model weights, Hugging Face caches, virtual environments, secrets, and large temporary files will not be committed to the repository.
+Model weights, Hugging Face caches, virtual environments, secrets, and large
+temporary files are not committed to the repository.
 The 30.9 MB raw prediction JSONL is hash-verified and retained outside Git
 under `results/raw/`; it can be regenerated with the documented full-run
 command. Aggregated tables and figures are committed.
