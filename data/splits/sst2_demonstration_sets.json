@@ -1,0 +1,401 @@
+{
+  "dataset": {
+    "name": "stanfordnlp/sst2",
+    "revision": null,
+    "train_fingerprint": "e7e6610fdbb3c277"
+  },
+  "demonstration_sets": [
+    {
+      "demonstrations": [
+        {
+          "idx": 62148,
+          "label": 0,
+          "label_name": "negative",
+          "position": 1,
+          "split": "train"
+        },
+        {
+          "idx": 38460,
+          "label": 1,
+          "label_name": "positive",
+          "position": 2,
+          "split": "train"
+        },
+        {
+          "idx": 28041,
+          "label": 0,
+          "label_name": "negative",
+          "position": 3,
+          "split": "train"
+        },
+        {
+          "idx": 52604,
+          "label": 1,
+          "label_name": "positive",
+          "position": 4,
+          "split": "train"
+        },
+        {
+          "idx": 52152,
+          "label": 0,
+          "label_name": "negative",
+          "position": 5,
+          "split": "train"
+        },
+        {
+          "idx": 8380,
+          "label": 1,
+          "label_name": "positive",
+          "position": 6,
+          "split": "train"
+        },
+        {
+          "idx": 8680,
+          "label": 0,
+          "label_name": "negative",
+          "position": 7,
+          "split": "train"
+        },
+        {
+          "idx": 31674,
+          "label": 1,
+          "label_name": "positive",
+          "position": 8,
+          "split": "train"
+        }
+      ],
+      "seed": 0
+    },
+    {
+      "demonstrations": [
+        {
+          "idx": 59449,
+          "label": 1,
+          "label_name": "positive",
+          "position": 1,
+          "split": "train"
+        },
+        {
+          "idx": 58722,
+          "label": 0,
+          "label_name": "negative",
+          "position": 2,
+          "split": "train"
+        },
+        {
+          "idx": 26163,
+          "label": 1,
+          "label_name": "positive",
+          "position": 3,
+          "split": "train"
+        },
+        {
+          "idx": 24384,
+          "label": 0,
+          "label_name": "negative",
+          "position": 4,
+          "split": "train"
+        },
+        {
+          "idx": 38736,
+          "label": 1,
+          "label_name": "positive",
+          "position": 5,
+          "split": "train"
+        },
+        {
+          "idx": 18868,
+          "label": 0,
+          "label_name": "negative",
+          "position": 6,
+          "split": "train"
+        },
+        {
+          "idx": 53843,
+          "label": 1,
+          "label_name": "positive",
+          "position": 7,
+          "split": "train"
+        },
+        {
+          "idx": 52971,
+          "label": 0,
+          "label_name": "negative",
+          "position": 8,
+          "split": "train"
+        }
+      ],
+      "seed": 1
+    },
+    {
+      "demonstrations": [
+        {
+          "idx": 24549,
+          "label": 0,
+          "label_name": "negative",
+          "position": 1,
+          "split": "train"
+        },
+        {
+          "idx": 40116,
+          "label": 1,
+          "label_name": "positive",
+          "position": 2,
+          "split": "train"
+        },
+        {
+          "idx": 5611,
+          "label": 0,
+          "label_name": "negative",
+          "position": 3,
+          "split": "train"
+        },
+        {
+          "idx": 66728,
+          "label": 1,
+          "label_name": "positive",
+          "position": 4,
+          "split": "train"
+        },
+        {
+          "idx": 29416,
+          "label": 0,
+          "label_name": "negative",
+          "position": 5,
+          "split": "train"
+        },
+        {
+          "idx": 61119,
+          "label": 1,
+          "label_name": "positive",
+          "position": 6,
+          "split": "train"
+        },
+        {
+          "idx": 60129,
+          "label": 0,
+          "label_name": "negative",
+          "position": 7,
+          "split": "train"
+        },
+        {
+          "idx": 10098,
+          "label": 1,
+          "label_name": "positive",
+          "position": 8,
+          "split": "train"
+        }
+      ],
+      "seed": 2
+    },
+    {
+      "demonstrations": [
+        {
+          "idx": 65386,
+          "label": 1,
+          "label_name": "positive",
+          "position": 1,
+          "split": "train"
+        },
+        {
+          "idx": 11036,
+          "label": 0,
+          "label_name": "negative",
+          "position": 2,
+          "split": "train"
+        },
+        {
+          "idx": 12482,
+          "label": 1,
+          "label_name": "positive",
+          "position": 3,
+          "split": "train"
+        },
+        {
+          "idx": 33154,
+          "label": 0,
+          "label_name": "negative",
+          "position": 4,
+          "split": "train"
+        },
+        {
+          "idx": 51358,
+          "label": 1,
+          "label_name": "positive",
+          "position": 5,
+          "split": "train"
+        },
+        {
+          "idx": 27259,
+          "label": 0,
+          "label_name": "negative",
+          "position": 6,
+          "split": "train"
+        },
+        {
+          "idx": 63609,
+          "label": 1,
+          "label_name": "positive",
+          "position": 7,
+          "split": "train"
+        },
+        {
+          "idx": 23430,
+          "label": 0,
+          "label_name": "negative",
+          "position": 8,
+          "split": "train"
+        }
+      ],
+      "seed": 3
+    },
+    {
+      "demonstrations": [
+        {
+          "idx": 59966,
+          "label": 0,
+          "label_name": "negative",
+          "position": 1,
+          "split": "train"
+        },
+        {
+          "idx": 62429,
+          "label": 1,
+          "label_name": "positive",
+          "position": 2,
+          "split": "train"
+        },
+        {
+          "idx": 25141,
+          "label": 0,
+          "label_name": "negative",
+          "position": 3,
+          "split": "train"
+        },
+        {
+          "idx": 140,
+          "label": 1,
+          "label_name": "positive",
+          "position": 4,
+          "split": "train"
+        },
+        {
+          "idx": 22094,
+          "label": 0,
+          "label_name": "negative",
+          "position": 5,
+          "split": "train"
+        },
+        {
+          "idx": 15854,
+          "label": 1,
+          "label_name": "positive",
+          "position": 6,
+          "split": "train"
+        },
+        {
+          "idx": 24490,
+          "label": 0,
+          "label_name": "negative",
+          "position": 7,
+          "split": "train"
+        },
+        {
+          "idx": 38745,
+          "label": 1,
+          "label_name": "positive",
+          "position": 8,
+          "split": "train"
+        }
+      ],
+      "seed": 4
+    },
+    {
+      "demonstrations": [
+        {
+          "idx": 56233,
+          "label": 1,
+          "label_name": "positive",
+          "position": 1,
+          "split": "train"
+        },
+        {
+          "idx": 43054,
+          "label": 0,
+          "label_name": "negative",
+          "position": 2,
+          "split": "train"
+        },
+        {
+          "idx": 14593,
+          "label": 1,
+          "label_name": "positive",
+          "position": 3,
+          "split": "train"
+        },
+        {
+          "idx": 5854,
+          "label": 0,
+          "label_name": "negative",
+          "position": 4,
+          "split": "train"
+        },
+        {
+          "idx": 25291,
+          "label": 1,
+          "label_name": "positive",
+          "position": 5,
+          "split": "train"
+        },
+        {
+          "idx": 46121,
+          "label": 0,
+          "label_name": "negative",
+          "position": 6,
+          "split": "train"
+        },
+        {
+          "idx": 55049,
+          "label": 1,
+          "label_name": "positive",
+          "position": 7,
+          "split": "train"
+        },
+        {
+          "idx": 50684,
+          "label": 0,
+          "label_name": "negative",
+          "position": 8,
+          "split": "train"
+        }
+      ],
+      "seed": 5
+    }
+  ],
+  "schema_version": 1,
+  "selection": {
+    "examples_per_label": 4,
+    "first_label_rule": "seed modulo 2; 0=negative and 1=positive",
+    "sampling_method": "sorted_pool_ids_then_seeded_sample_per_label",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "shot_counts": [
+      0,
+      1,
+      2,
+      4,
+      8
+    ]
+  },
+  "source": {
+    "pool": "training split excluding prompt-development IDs",
+    "split": "train",
+    "split_manifest_sha256": "155e74091975f4a0c2a1b0b333bbb4b4981718b3687b645932acb2a3c22fda6e"
+  }
+}

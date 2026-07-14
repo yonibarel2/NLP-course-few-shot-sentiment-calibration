@@ -162,6 +162,27 @@ The validation labels are not used for:
 - model selection;
 - configuration tuning.
 
+### Data Preparation
+
+The deterministic partition settings are stored in:
+
+```text
+configs/data.yaml
+```
+
+Prepare and validate the SST-2 split manifest with:
+
+```text
+python scripts/prepare_sst2.py
+```
+
+The preparation step uses seed `42`, reserves 100 training examples per
+class for prompt development, and saves the selected identifiers and dataset
+fingerprints to `data/splits/sst2_split_manifest.json`. It validates source
+split sizes, validation class counts, prompt-development balance, training
+partition disjointness, and complete training-set coverage without committing
+a full dataset copy.
+
 ## Demonstration Construction
 
 The experiment uses shot counts:
@@ -187,6 +208,17 @@ The 2-, 4-, and 8-shot prefixes are class-balanced.
 The first demonstration's label alternates across seeds so that the 1-shot condition does not consistently favor one class.
 
 The same demonstration identities and ordering are used in both precision conditions.
+
+Generate and validate all six selections with:
+
+```text
+python scripts/generate_demonstrations.py
+```
+
+The ordered identifiers and labels are saved in
+`data/splits/sst2_demonstration_sets.json`. The manifest records the source
+split-manifest hash and dataset fingerprint, and the generator asserts that
+prompt-development examples are excluded.
 
 ## Prompt Format
 
@@ -218,6 +250,29 @@ negative
 Before running the full experiment, the tokenizer representation of both verbalizers must be verified.
 
 If a verbalizer contains multiple tokens, its score will be computed using the summed conditional log-probabilities of the complete token sequence.
+
+The exact plain-text prompt construction and saved-prefix materialization are
+implemented in `src/prompts.py`. Tokenizer and chat-template handling remain a
+separate validation step because they depend on the selected model tokenizer.
+
+Inspect the verbalizers in real 0-shot and 2-shot prompt contexts with:
+
+```text
+python scripts/inspect_verbalizers.py
+```
+
+The validated report is saved to
+`results/tables/verbalizer_tokenization.json`. With the Qwen tokenizer at
+resolved revision `aa8e72537993ba99e69dfaafa59ed015b17504d1`, both contexts
+produce the same single-token continuations:
+
+- `negative`: token ID `42224`;
+- `positive`: token ID `30487`.
+
+The implementation still records complete token sequences so that a future
+tokenizer change cannot silently introduce an incorrect single-token
+assumption. The model and tokenizer configuration revisions remain unpinned
+until the pilot, as required by the experiment specification.
 
 ## Confidence Extraction
 
@@ -264,6 +319,21 @@ The majority-class baseline always predicts the most frequent label in the SST-2
 Its confidence is set to the empirical training frequency of that label.
 
 The majority label and confidence are computed using the training split only.
+
+Compute the baseline with:
+
+```text
+python scripts/compute_majority_baseline.py
+```
+
+The validated result is stored in
+`results/tables/majority_class_baseline.json`, including all 10 equal-width
+reliability bins. On the recorded SST-2 splits, the training majority label is
+`positive` (37,569 of 67,349 examples), giving a fixed confidence of
+`0.5578256544`. On the complete validation split, its accuracy is
+`0.5091743119` and its ECE is `0.0486513425`. Validation labels are used only
+to evaluate accuracy and calibration; they do not determine the prediction or
+confidence.
 
 ## Tools
 
@@ -359,6 +429,11 @@ The pilot will verify that:
 - predictions are saved in the expected format;
 - both conditions use identical prompts and examples.
 
+All preparation and tokenizer-inspection steps are CPU-only. A BF16-capable GPU
+is first needed for loading the model and running these two pilot inference
+conditions. Exact GPU, CUDA, runtime, and memory information will be recorded
+during the pilot before any full experiment is attempted.
+
 The full experiment will run only after the pilot passes.
 
 ## Output Format
@@ -368,6 +443,7 @@ Each prediction will be saved with fields similar to:
 ```text
 model_name
 model_revision
+tokenizer_revision
 precision
 shot_count
 seed
@@ -415,10 +491,11 @@ Model weights, Hugging Face caches, virtual environments, secrets, and large tem
 - [x] Higher-precision configuration defined
 - [x] 4-bit configuration defined
 - [ ] Model revision pinned
-- [ ] SST-2 data preparation implemented
-- [ ] Demonstration sets generated
-- [ ] Prompt construction implemented
-- [ ] Label tokenization validated
+- [x] SST-2 data preparation implemented
+- [x] Majority-class baseline computed
+- [x] Demonstration sets generated
+- [x] Prompt construction implemented
+- [x] Label tokenization validated
 - [ ] Pilot pipeline implemented
 - [ ] Pilot experiment completed
 - [ ] Full experiment completed

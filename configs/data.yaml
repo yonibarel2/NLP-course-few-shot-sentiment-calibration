@@ -1,0 +1,23 @@
+dataset:
+  name: stanfordnlp/sst2
+  revision: null  # Record a concrete revision when the dataset source is frozen.
+  train_split: train
+  validation_split: validation
+  expected_train_size: 67349
+  expected_validation_size: 872
+  expected_validation_labels:
+    0: 428
+    1: 444
+
+prompt_development:
+  seed: 42
+  examples_per_label: 100
+
+demonstrations:
+  seeds: [0, 1, 2, 3, 4, 5]
+  examples_per_label: 4
+
+output:
+  manifest_path: data/splits/sst2_split_manifest.json
+  demonstration_manifest_path: data/splits/sst2_demonstration_sets.json
+  baseline_path: results/tables/majority_class_baseline.json

@@ -1,0 +1,1256 @@
+{
+  "counts": {
+    "demonstration_pool": 67149,
+    "demonstration_pool_by_label": {
+      "0": 29680,
+      "1": 37469
+    },
+    "prompt_development": 200,
+    "prompt_development_by_label": {
+      "0": 100,
+      "1": 100
+    },
+    "train": 67349,
+    "train_by_label": {
+      "0": 29780,
+      "1": 37569
+    },
+    "validation": 872,
+    "validation_by_label": {
+      "0": 428,
+      "1": 444
+    }
+  },
+  "dataset": {
+    "fingerprints": {
+      "train": "e7e6610fdbb3c277",
+      "validation": "c1ddc6497ec97f98"
+    },
+    "name": "stanfordnlp/sst2",
+    "revision": null
+  },
+  "demonstration_pool": {
+    "definition": "all training examples excluding prompt_development_examples",
+    "split": "train"
+  },
+  "evaluation": {
+    "definition": "complete labeled validation split",
+    "split": "validation"
+  },
+  "label_mapping": {
+    "0": "negative",
+    "1": "positive"
+  },
+  "prompt_development_examples": [
+    {
+      "idx": 227,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 511,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 541,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 1004,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 1255,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 1763,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 1775,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 2027,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 2678,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 2746,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 3157,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 4123,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 4324,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 4694,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 5139,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 5189,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 5681,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 5753,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 5804,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 6206,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 6396,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 7998,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 8180,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 8283,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 8609,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 9288,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 9571,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 9719,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 9838,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 10264,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 10348,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 10852,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 10992,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 11173,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 11280,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 11602,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 12187,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 12358,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 13089,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 13180,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 13281,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 13573,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 13862,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 14166,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 14300,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 14857,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 15072,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 16069,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 16750,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 16820,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 17108,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 17139,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 17993,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 18125,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 18617,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 18942,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 19146,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 19358,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 19650,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 20196,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 20366,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 20435,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 20635,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 21078,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 21144,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 21539,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 21810,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 22943,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 23012,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 23265,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 23464,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 23819,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 24152,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 24411,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 24583,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 24783,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 25135,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 25255,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 25539,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 25923,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 26047,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 26223,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 26245,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 26427,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 26473,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 26795,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 27825,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 28298,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 28435,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 28740,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 29251,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 29386,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 30304,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 30387,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 30424,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 30546,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 30732,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 30919,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 31138,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 31347,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 31386,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 31597,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 32931,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 33196,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 33510,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 33966,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 33974,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 34906,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 34992,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 35183,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 35689,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 35703,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 35926,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 36235,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 36373,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 36572,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 37859,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 38291,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 38313,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 39063,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 39277,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 39444,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 39959,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 40015,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 40129,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 40394,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 40552,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 40558,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 40751,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 40795,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 40830,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 41638,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 41716,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 42912,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 42961,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 43137,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 43513,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 43534,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 43549,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 43558,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 44162,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 44309,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 44333,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 44366,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 44931,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 45022,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 45141,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 46002,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 46394,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 46678,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 46998,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 47089,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 47418,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 48071,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 48201,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 48478,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 49046,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 49088,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 49155,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 49308,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 50348,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 50824,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 50967,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 51321,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 52183,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 52388,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 52558,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 53986,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 54595,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 54785,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 55045,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 55780,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 56043,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 56293,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 56702,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 56897,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 57346,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 57837,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 58353,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 58792,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 59191,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 59311,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 59390,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 59478,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 59895,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 60001,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 60430,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 61381,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 63426,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 63682,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 64376,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 64828,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 65805,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 65972,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 66106,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 66225,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 66438,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 66966,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    },
+    {
+      "idx": 66993,
+      "label": 0,
+      "label_name": "negative",
+      "split": "train"
+    },
+    {
+      "idx": 67224,
+      "label": 1,
+      "label_name": "positive",
+      "split": "train"
+    }
+  ],
+  "prompt_development_selection": {
+    "examples_per_label": 100,
+    "sampling_method": "sorted_ids_then_seeded_sample_per_label",
+    "seed": 42
+  },
+  "schema_version": 1,
+  "source_splits": {
+    "train": "train",
+    "validation": "validation"
+  }
+}

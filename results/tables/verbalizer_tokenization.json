@@ -1,0 +1,97 @@
+{
+  "contexts": [
+    {
+      "demonstration_seed": null,
+      "evaluation_source": {
+        "idx": 227,
+        "role": "reserved prompt-development query",
+        "split": "train"
+      },
+      "name": "0-shot",
+      "prefix_token_count": 53,
+      "prompt_sha256": "092269ab8cfb0e49e9770489d89da8ea6df8ac7e4ee4a6de5cee8e6d74435e05",
+      "rendered_prefix_sha256": "9a2a91c95655b2bd3f88fb0fd1fabf75fc792eaf254f613220a3dcffe6cba0a7",
+      "shot_count": 0,
+      "verbalizers": {
+        "negative": {
+          "label": 0,
+          "text": "negative",
+          "token_count": 1,
+          "token_ids": [
+            42224
+          ],
+          "tokens": [
+            "negative"
+          ]
+        },
+        "positive": {
+          "label": 1,
+          "text": "positive",
+          "token_count": 1,
+          "token_ids": [
+            30487
+          ],
+          "tokens": [
+            "positive"
+          ]
+        }
+      }
+    },
+    {
+      "demonstration_seed": 0,
+      "evaluation_source": {
+        "idx": 227,
+        "role": "reserved prompt-development query",
+        "split": "train"
+      },
+      "name": "2-shot-seed-0",
+      "prefix_token_count": 101,
+      "prompt_sha256": "9d30d3ba5ea3995124a51907c409a81941138ccbb4ac4dada284b30b4c5e86c0",
+      "rendered_prefix_sha256": "b080c6b68d25bc859cd1b2cba6a171b1941b64728f24bf0d7d8bde6b63ead6af",
+      "shot_count": 2,
+      "verbalizers": {
+        "negative": {
+          "label": 0,
+          "text": "negative",
+          "token_count": 1,
+          "token_ids": [
+            42224
+          ],
+          "tokens": [
+            "negative"
+          ]
+        },
+        "positive": {
+          "label": 1,
+          "text": "positive",
+          "token_count": 1,
+          "token_ids": [
+            30487
+          ],
+          "tokens": [
+            "positive"
+          ]
+        }
+      }
+    }
+  ],
+  "inputs": {
+    "demonstration_manifest_sha256": "32e3b8d8be46a66553df6ef4e54353f9115b6fedb2c8508fba444f585c52f422",
+    "split_manifest_sha256": "155e74091975f4a0c2a1b0b333bbb4b4981718b3687b645932acb2a3c22fda6e"
+  },
+  "model_name": "Qwen/Qwen2.5-3B-Instruct",
+  "requested_revision": null,
+  "requires_sequence_scoring": false,
+  "schema_version": 1,
+  "software": {
+    "transformers": "5.13.1"
+  },
+  "tokenizer": {
+    "chat_template_sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f",
+    "class": "Qwen2Tokenizer",
+    "is_fast": true,
+    "name_or_path": "Qwen/Qwen2.5-3B-Instruct",
+    "resolved_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+    "vocab_size": 151643
+  }
+}
