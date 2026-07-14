@@ -617,6 +617,8 @@ recomputed during this audit.
 - [x] Research question defined
 - [x] Experimental design defined
 - [x] ACL paper skeleton prepared
+- [x] Final ACL report source and Overleaf package prepared
+- [ ] Final compiled PDF visually reviewed in Overleaf
 - [x] Model selected
 - [x] Higher-precision configuration defined
 - [x] 4-bit configuration defined
