@@ -439,6 +439,12 @@ predictions, prompt identity across precision conditions, dataset
 fingerprints, model/tokenizer revisions, and the approved quantization
 configuration all validate.
 
+Because both inspected Qwen verbalizers contain one token, the validated
+scorer groups prompts by equal tokenized length and obtains both label scores
+from one shared-prefix forward pass. Both precision conditions use the same
+grouping and batch size (`8`). A general full-sequence fallback remains in
+place for any future multi-token verbalizer.
+
 The pilot will verify that:
 
 - the model loads successfully;
@@ -457,7 +463,7 @@ during the pilot before any full experiment is attempted.
 The pilot passed on an NVIDIA L40 using CUDA 12.8 and PyTorch 2.8.0. It
 produced 80 validated predictions: 20 examples times two shot conditions times
 two precision conditions. BF16 peak allocated GPU memory was approximately
-9.70 GB and 4-bit peak allocated memory was approximately 5.72 GB. Pilot
+6.22 GB and 4-bit peak allocated memory was approximately 2.28 GB. Pilot
 metrics are stored only as pipeline checks and are not treated as final
 experimental results.
 

@@ -1,14 +1,14 @@
 {
   "conditions": [
     {
-      "elapsed_seconds_including_model_load": 12.280679754912853,
-      "peak_gpu_memory_bytes": 9696847360,
+      "elapsed_seconds_including_model_load": 3.667855367064476,
+      "peak_gpu_memory_bytes": 6222338560,
       "precision_condition": "bf16",
       "quantized": false
     },
     {
-      "elapsed_seconds_including_model_load": 5.042960204184055,
-      "peak_gpu_memory_bytes": 5719465472,
+      "elapsed_seconds_including_model_load": 5.39765752851963,
+      "peak_gpu_memory_bytes": 2284488704,
       "precision_condition": "4bit_nf4",
       "quantized": true
     }
@@ -30,7 +30,7 @@
     {
       "accuracy": 0.95,
       "demonstration_seed": null,
-      "ece_10_bins": 0.04746845364570618,
+      "ece_10_bins": 0.04748539626598358,
       "num_examples": 20,
       "precision_condition": "4bit_nf4",
       "shot_count": 0
@@ -38,7 +38,7 @@
     {
       "accuracy": 0.95,
       "demonstration_seed": 0,
-      "ece_10_bins": 0.03995879590511319,
+      "ece_10_bins": 0.04092780649662022,
       "num_examples": 20,
       "precision_condition": "4bit_nf4",
       "shot_count": 2
@@ -46,7 +46,7 @@
     {
       "accuracy": 0.95,
       "demonstration_seed": null,
-      "ece_10_bins": 0.056351065635681236,
+      "ece_10_bins": 0.06067989468574534,
       "num_examples": 20,
       "precision_condition": "bf16",
       "shot_count": 0
@@ -54,7 +54,7 @@
     {
       "accuracy": 0.95,
       "demonstration_seed": 0,
-      "ece_10_bins": 0.04943069517612464,
+      "ece_10_bins": 0.04954959154129035,
       "num_examples": 20,
       "precision_condition": "bf16",
       "shot_count": 2
@@ -66,7 +66,7 @@
     "tokenizer_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1"
   },
   "outputs": {
-    "prediction_sha256": "050c2a111b8bb62a0f6a19c85a418014f5eba8118e661bfad5bd967550a34d5e",
+    "prediction_sha256": "161836c13c0b777ce0ef7ccc4a2643548bc95a610ca1e2d85014235bcdffb55b",
     "predictions": "results/raw/pilot_predictions.jsonl"
   },
   "pilot": {

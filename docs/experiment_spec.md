@@ -226,6 +226,24 @@ If a verbalizer consists of one token, use its logit at the answer position.
 
 If a verbalizer consists of multiple tokens, calculate its score as the sum of the conditional log-probabilities of the full token sequence.
 
+### Final Batching Procedure
+
+The successful pilot established the following fixed batching procedure for
+the full experiment:
+
+- tokenize prompts before batching;
+- group prompts by equal tokenized sequence length;
+- use batch size `8` within each group;
+- restore predictions to the original deterministic condition/example order;
+- apply exactly the same grouping and batch size in BF16 and 4-bit NF4.
+
+Because both inspected verbalizers contain one token, both label logits are
+read from one shared prompt-prefix forward pass. This is exactly the
+single-token scoring rule above and does not alter the prompt, label scores,
+restricted softmax, or research question. The implementation retains summed
+conditional log-probability scoring as a fallback for a multi-token
+verbalizer.
+
 ## Prediction and Confidence
 
 The model must not generate free-form text for the main classification procedure.

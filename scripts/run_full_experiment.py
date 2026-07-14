@@ -479,7 +479,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--figure-directory", type=Path, default=DEFAULT_FIGURE_DIRECTORY
     )
-    parser.add_argument("--batch-size", type=int, default=16)
+    parser.add_argument("--batch-size", type=int, default=8)
     return parser.parse_args()
 
 
