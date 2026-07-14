@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import math
+import inspect
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from typing import Any
@@ -88,7 +89,6 @@ def summed_candidate_log_probabilities(
     if logits.shape[0] != len(candidates):
         raise ValueError("logit batch size does not match candidate count")
 
-    log_probabilities = torch.log_softmax(logits.float(), dim=-1)
     scores: list[torch.Tensor] = []
     for row, candidate in enumerate(candidates):
         token_scores: list[torch.Tensor] = []
@@ -98,7 +98,10 @@ def summed_candidate_log_probabilities(
                 raise ValueError("candidate continuation position is outside logits")
             if token_id < 0 or token_id >= logits.shape[2]:
                 raise ValueError("candidate continuation token is outside vocabulary")
-            token_scores.append(log_probabilities[row, logit_position, token_id])
+            position_logits = logits[row, logit_position].float()
+            token_scores.append(
+                position_logits[token_id] - torch.logsumexp(position_logits, dim=-1)
+            )
         scores.append(torch.stack(token_scores).sum())
     return torch.stack(scores)
 
@@ -118,6 +121,69 @@ def _pad_candidates(
         input_ids[row, :length] = torch.tensor(candidate.input_ids, dtype=torch.long)
         attention_mask[row, :length] = 1
     return input_ids, attention_mask
+
+
+def _score_single_token_batch(
+    model: Any,
+    grouped_candidates: Sequence[Sequence[VerbalizerCandidate]],
+    *,
+    pad_token_id: int,
+    device: torch.device | str,
+) -> list[LabelProbabilities]:
+    """Use one prefix pass per prompt when both labels are single tokens."""
+
+    prefixes = [
+        candidates[0].input_ids[: candidates[0].prefix_token_count]
+        for candidates in grouped_candidates
+    ]
+    if any(
+        candidate.input_ids[: candidate.prefix_token_count] != prefix
+        for candidates, prefix in zip(grouped_candidates, prefixes, strict=True)
+        for candidate in candidates
+    ):
+        raise ValueError("label candidates do not share an identical scoring prefix")
+    maximum_length = max(len(prefix) for prefix in prefixes)
+    input_ids = torch.full(
+        (len(prefixes), maximum_length), pad_token_id, dtype=torch.long
+    )
+    attention_mask = torch.zeros_like(input_ids)
+    for row, prefix in enumerate(prefixes):
+        length = len(prefix)
+        input_ids[row, maximum_length - length :] = torch.tensor(
+            prefix, dtype=torch.long
+        )
+        attention_mask[row, maximum_length - length :] = 1
+
+    forward_kwargs: dict[str, Any] = {
+        "input_ids": input_ids.to(device),
+        "attention_mask": attention_mask.to(device),
+    }
+    if "logits_to_keep" in inspect.signature(model.forward).parameters:
+        forward_kwargs["logits_to_keep"] = 1
+    with torch.inference_mode():
+        outputs = model(**forward_kwargs)
+    final_logits = outputs.logits[:, -1, :].float()
+
+    results: list[LabelProbabilities] = []
+    for row, candidates in enumerate(grouped_candidates):
+        if [candidate.label for candidate in candidates] != [0, 1]:
+            raise AssertionError("verbalizer candidates must be ordered negative, positive")
+        token_ids = [candidate.continuation_ids[0] for candidate in candidates]
+        normalizer = torch.logsumexp(final_logits[row], dim=-1)
+        pair_scores = torch.stack(
+            [final_logits[row, token_id] - normalizer for token_id in token_ids]
+        )
+        probabilities = torch.softmax(pair_scores, dim=0).detach().cpu()
+        pair_scores_cpu = pair_scores.detach().cpu()
+        results.append(
+            LabelProbabilities(
+                negative_probability=float(probabilities[0]),
+                positive_probability=float(probabilities[1]),
+                negative_log_score=float(pair_scores_cpu[0]),
+                positive_log_score=float(pair_scores_cpu[1]),
+            )
+        )
+    return results
 
 
 def score_prompts(
@@ -144,6 +210,20 @@ def score_prompts(
         grouped_candidates = [
             prepare_verbalizer_candidates(tokenizer, prompt) for prompt in prompt_batch
         ]
+        if all(
+            len(candidate.continuation_ids) == 1
+            for candidates in grouped_candidates
+            for candidate in candidates
+        ):
+            all_results.extend(
+                _score_single_token_batch(
+                    model,
+                    grouped_candidates,
+                    pad_token_id=int(pad_token_id),
+                    device=device,
+                )
+            )
+            continue
         flat_candidates = [
             candidate for candidates in grouped_candidates for candidate in candidates
         ]
