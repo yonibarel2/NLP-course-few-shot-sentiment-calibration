@@ -161,7 +161,18 @@ precision:
 
 The tokenizer, prompt construction, demonstration selection, evaluation examples, batching procedure, and scoring method must remain identical across both conditions.
 
-The pilot must inspect which model modules are quantized and which remain in higher precision.
+The pilot was required to inspect which model modules are quantized and which
+remain in higher precision. Although the successful pilot verified both model
+loads and inference conditions, it did not retain a module-by-module datatype
+inventory. This documentation gap was closed with an approved post-experiment
+structural audit using the same pinned checkpoint, configurations, and core
+software versions. The audit found zero quantized weight modules in BF16 and
+252 NF4 `Linear4bit` weight modules with BF16 computation in the quantized
+condition. Non-quantized components, including embeddings, normalization
+parameters, and the output head, remained BF16. The audit performed no
+inference and did not change any predictions, metrics, or conclusions. Exact
+module records and hardware metadata are retained in
+`results/tables/model_precision_inventory.json`.
 
 ## Shot Counts
 
@@ -502,6 +513,13 @@ Suggested responsibilities:
 - load BF16 model;
 - load 4-bit model;
 - inspect module datatypes.
+
+### `src/precision_inventory.py`
+
+- inventory every weight-bearing module and its stored datatype;
+- identify bitsandbytes 4-bit modules;
+- verify NF4 weights and BF16 computation;
+- validate the intended BF16-versus-quantized module boundary.
 
 ### `src/inference.py`
 

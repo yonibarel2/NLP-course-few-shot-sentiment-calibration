@@ -145,6 +145,15 @@ precision:
 
 Both configurations use the exact revision pinned by the successful pilot.
 
+The retained module-level precision audit is stored in
+`results/tables/model_precision_inventory.json`. It found no quantized
+weight modules in the BF16 load. In the 4-bit load, 252 weight modules were
+bitsandbytes `Linear4bit` modules with NF4 weights and BF16 computation;
+embeddings, normalization parameters, and the output head remained BF16. The
+recorded bitsandbytes configuration also confirms that double quantization was
+disabled. This structural audit did not perform inference or alter the full-run
+predictions.
+
 ## SST-2 Data Protocol
 
 A fixed stratified subset of 200 training examples is reserved for prompt development and debugging:
@@ -591,6 +600,18 @@ and bootstrap commands in that order. The pilot and full experiment require a
 BF16-capable NVIDIA GPU; data preparation, metrics, and bootstrap analysis are
 CPU-only.
 
+Run the optional retained module-level precision audit with:
+
+```text
+python scripts/inspect_model_precision.py
+```
+
+Because the original stopped L40 instance was unavailable, the follow-up audit
+was executed on an NVIDIA A100-SXM4-80GB using the same pinned checkpoint and
+the same PyTorch, Transformers, Accelerate, and bitsandbytes versions as the
+full run. Hardware performance was not measured and no experimental result was
+recomputed during this audit.
+
 ## Status
 
 - [x] Research question defined
@@ -607,6 +628,7 @@ CPU-only.
 - [x] Label tokenization validated
 - [x] Pilot pipeline implemented
 - [x] Pilot experiment completed
+- [x] BF16/NF4 module precision boundary audited
 - [x] Full experiment pipeline implemented
 - [x] Full experiment completed
 - [x] Results analyzed with paired hierarchical bootstrap

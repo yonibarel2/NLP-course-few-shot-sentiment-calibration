@@ -186,3 +186,32 @@ The following Pod artifacts are deliberately not part of the submission:
 GPU VRAM and system RAM are temporary working memory and contain nothing that
 needs to be copied. The essential persistent experiment outputs are already in
 the local workspace.
+
+## 13. Retained Module-Precision Audit
+
+- During report preparation, identified that the pilot had verified successful
+  BF16 and 4-bit loading/inference but had not retained the module-by-module
+  datatype inventory requested by the specification.
+- Explained the gap and obtained approval for a short structural audit. This
+  was not a rerun of SST-2 inference and did not modify any experimental result.
+- The original stopped L40 host had no available GPU, so an A100-SXM4-80GB
+  temporary Pod was used. Its attached network volume was empty; the pushed
+  repository was cloned and the exact full-run PyTorch `2.8.0+cu128`,
+  Transformers `5.13.1`, Accelerate `1.14.0`, and bitsandbytes `0.49.2`
+  versions were recreated.
+- Loaded revision `aa8e72537993ba99e69dfaafa59ed015b17504d1` sequentially
+  under the approved BF16 and 4-bit configurations.
+- Confirmed that the BF16 model contained 434 BF16 parameter tensors and no
+  detected quantized weight modules.
+- Confirmed that the quantized model contained 252 NF4 `Linear4bit` weight
+  modules stored in packed `uint8` tensors with BF16 computation. The other 182
+  parameter tensors remained BF16, including embeddings, normalization
+  parameters, and the output head. Double quantization was disabled.
+- The reported model footprints were approximately 5.75 GiB for BF16 and
+  1.87 GiB for 4-bit.
+- Saved the complete audit to
+  `results/tables/model_precision_inventory.json`, copied it locally, and
+  verified SHA-256
+  `5a5f8d73324afca33cc9d8acba9ee77a254c553d213742ee11b034afc9dfa7c0`
+  against the Pod copy.
+- Ran the two audit-specific tests on the GPU environment; both passed.
