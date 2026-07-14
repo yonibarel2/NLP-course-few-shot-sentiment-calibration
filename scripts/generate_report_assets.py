@@ -37,6 +37,7 @@ def _configure_style() -> None:
     plt.rcParams.update(
         {
             "font.family": "serif",
+            "font.serif": ["Times New Roman", "Times", "DejaVu Serif"],
             "font.size": 8.5,
             "axes.labelsize": 8.5,
             "axes.titlesize": 9,
