@@ -524,6 +524,10 @@ prompt, six demonstration selections, and fixed 10-bin ECE estimator. See
 interpretation and [`results/tables/bootstrap_summary.json`](results/tables/bootstrap_summary.json)
 for exact values.
 
+For a chronological record of implementation decisions, pilot issues,
+validation steps, the GPU run, and artifact transfer, see
+[`docs/development_log.md`](docs/development_log.md).
+
 ## Output Format
 
 Each prediction is saved with the following fields:
