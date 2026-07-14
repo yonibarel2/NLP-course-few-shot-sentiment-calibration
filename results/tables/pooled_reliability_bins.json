@@ -1,0 +1,1094 @@
+{
+  "pooled_conditions": [
+    {
+      "ece_10_bins": 0.1066285075124251,
+      "note": "nonzero-shot rows pool six demonstration seeds for visualization only",
+      "num_predictions": 872,
+      "precision_condition": "bf16",
+      "reliability_bins": [
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 0,
+          "lower_bound": 0.0,
+          "mean_confidence": null,
+          "upper_bound": 0.1,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 1,
+          "lower_bound": 0.1,
+          "mean_confidence": null,
+          "upper_bound": 0.2,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 2,
+          "lower_bound": 0.2,
+          "mean_confidence": null,
+          "upper_bound": 0.3,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 3,
+          "lower_bound": 0.3,
+          "mean_confidence": null,
+          "upper_bound": 0.4,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 4,
+          "lower_bound": 0.4,
+          "mean_confidence": null,
+          "upper_bound": 0.5,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": 0.1527190566062927,
+          "count": 10,
+          "empirical_accuracy": 0.4,
+          "index": 5,
+          "lower_bound": 0.5,
+          "mean_confidence": 0.5527190566062927,
+          "upper_bound": 0.6,
+          "weighted_gap": 0.0017513653280538154
+        },
+        {
+          "absolute_gap": 0.1888846190352188,
+          "count": 19,
+          "empirical_accuracy": 0.8421052631578947,
+          "index": 6,
+          "lower_bound": 0.6,
+          "mean_confidence": 0.6532206441226759,
+          "upper_bound": 0.7,
+          "weighted_gap": 0.00411560523127197
+        },
+        {
+          "absolute_gap": 0.2297093300592331,
+          "count": 21,
+          "empirical_accuracy": 0.5238095238095238,
+          "index": 7,
+          "lower_bound": 0.7,
+          "mean_confidence": 0.7535188538687569,
+          "upper_bound": 0.8,
+          "weighted_gap": 0.00553199074683933
+        },
+        {
+          "absolute_gap": 0.5119966218868892,
+          "count": 12,
+          "empirical_accuracy": 0.3333333333333333,
+          "index": 8,
+          "lower_bound": 0.8,
+          "mean_confidence": 0.8453299552202225,
+          "upper_bound": 0.9,
+          "weighted_gap": 0.007045825071837926
+        },
+        {
+          "absolute_gap": 0.09493358620890868,
+          "count": 810,
+          "empirical_accuracy": 0.9012345679012346,
+          "index": 9,
+          "lower_bound": 0.9,
+          "mean_confidence": 0.9961681541101433,
+          "upper_bound": 1.0,
+          "weighted_gap": 0.08818372113442206
+        }
+      ],
+      "shot_count": 0
+    },
+    {
+      "ece_10_bins": 0.12423058185692222,
+      "note": "nonzero-shot rows pool six demonstration seeds for visualization only",
+      "num_predictions": 5232,
+      "precision_condition": "bf16",
+      "reliability_bins": [
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 0,
+          "lower_bound": 0.0,
+          "mean_confidence": null,
+          "upper_bound": 0.1,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 1,
+          "lower_bound": 0.1,
+          "mean_confidence": null,
+          "upper_bound": 0.2,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 2,
+          "lower_bound": 0.2,
+          "mean_confidence": null,
+          "upper_bound": 0.3,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 3,
+          "lower_bound": 0.3,
+          "mean_confidence": null,
+          "upper_bound": 0.4,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 4,
+          "lower_bound": 0.4,
+          "mean_confidence": null,
+          "upper_bound": 0.5,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": 0.12900884223706793,
+          "count": 99,
+          "empirical_accuracy": 0.42424242424242425,
+          "index": 5,
+          "lower_bound": 0.5,
+          "mean_confidence": 0.5532512664794922,
+          "upper_bound": 0.6,
+          "weighted_gap": 0.0024411076799445196
+        },
+        {
+          "absolute_gap": 0.026087400733783683,
+          "count": 93,
+          "empirical_accuracy": 0.6236559139784946,
+          "index": 6,
+          "lower_bound": 0.6,
+          "mean_confidence": 0.6497433147122783,
+          "upper_bound": 0.7,
+          "weighted_gap": 0.00046370953139179713
+        },
+        {
+          "absolute_gap": 0.18097159077849567,
+          "count": 158,
+          "empirical_accuracy": 0.569620253164557,
+          "index": 7,
+          "lower_bound": 0.7,
+          "mean_confidence": 0.7505918439430527,
+          "upper_bound": 0.8,
+          "weighted_gap": 0.005465120669534082
+        },
+        {
+          "absolute_gap": 0.2991330894861328,
+          "count": 178,
+          "empirical_accuracy": 0.5617977528089888,
+          "index": 8,
+          "lower_bound": 0.8,
+          "mean_confidence": 0.8609308422951216,
+          "upper_bound": 0.9,
+          "weighted_gap": 0.010176928503159717
+        },
+        {
+          "absolute_gap": 0.11754617333209427,
+          "count": 4704,
+          "empirical_accuracy": 0.8773384353741497,
+          "index": 9,
+          "lower_bound": 0.9,
+          "mean_confidence": 0.994884608706244,
+          "upper_bound": 1.0,
+          "weighted_gap": 0.1056837154728921
+        }
+      ],
+      "shot_count": 1
+    },
+    {
+      "ece_10_bins": 0.08718696597747122,
+      "note": "nonzero-shot rows pool six demonstration seeds for visualization only",
+      "num_predictions": 5232,
+      "precision_condition": "bf16",
+      "reliability_bins": [
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 0,
+          "lower_bound": 0.0,
+          "mean_confidence": null,
+          "upper_bound": 0.1,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 1,
+          "lower_bound": 0.1,
+          "mean_confidence": null,
+          "upper_bound": 0.2,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 2,
+          "lower_bound": 0.2,
+          "mean_confidence": null,
+          "upper_bound": 0.3,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 3,
+          "lower_bound": 0.3,
+          "mean_confidence": null,
+          "upper_bound": 0.4,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 4,
+          "lower_bound": 0.4,
+          "mean_confidence": null,
+          "upper_bound": 0.5,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": 0.1699116034754392,
+          "count": 58,
+          "empirical_accuracy": 0.3793103448275862,
+          "index": 5,
+          "lower_bound": 0.5,
+          "mean_confidence": 0.5492219483030254,
+          "upper_bound": 0.6,
+          "weighted_gap": 0.0018835766440320097
+        },
+        {
+          "absolute_gap": 0.1861323247353236,
+          "count": 60,
+          "empirical_accuracy": 0.4666666666666667,
+          "index": 6,
+          "lower_bound": 0.6,
+          "mean_confidence": 0.6527989914019903,
+          "upper_bound": 0.7,
+          "weighted_gap": 0.0021345450084326104
+        },
+        {
+          "absolute_gap": 0.22782036330964828,
+          "count": 72,
+          "empirical_accuracy": 0.5277777777777778,
+          "index": 7,
+          "lower_bound": 0.7,
+          "mean_confidence": 0.7555981410874261,
+          "upper_bound": 0.8,
+          "weighted_gap": 0.0031351426143529583
+        },
+        {
+          "absolute_gap": 0.21720537768220005,
+          "count": 106,
+          "empirical_accuracy": 0.6415094339622641,
+          "index": 8,
+          "lower_bound": 0.8,
+          "mean_confidence": 0.8587148116444642,
+          "upper_bound": 0.9,
+          "weighted_gap": 0.004400567667108793
+        },
+        {
+          "absolute_gap": 0.08016867044485954,
+          "count": 4936,
+          "empirical_accuracy": 0.9167341977309562,
+          "index": 9,
+          "lower_bound": 0.9,
+          "mean_confidence": 0.9969028681758157,
+          "upper_bound": 1.0,
+          "weighted_gap": 0.07563313404354485
+        }
+      ],
+      "shot_count": 2
+    },
+    {
+      "ece_10_bins": 0.061397888165092694,
+      "note": "nonzero-shot rows pool six demonstration seeds for visualization only",
+      "num_predictions": 5232,
+      "precision_condition": "bf16",
+      "reliability_bins": [
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 0,
+          "lower_bound": 0.0,
+          "mean_confidence": null,
+          "upper_bound": 0.1,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 1,
+          "lower_bound": 0.1,
+          "mean_confidence": null,
+          "upper_bound": 0.2,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 2,
+          "lower_bound": 0.2,
+          "mean_confidence": null,
+          "upper_bound": 0.3,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 3,
+          "lower_bound": 0.3,
+          "mean_confidence": null,
+          "upper_bound": 0.4,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 4,
+          "lower_bound": 0.4,
+          "mean_confidence": null,
+          "upper_bound": 0.5,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": 0.030915461267743805,
+          "count": 35,
+          "empirical_accuracy": 0.5142857142857142,
+          "index": 5,
+          "lower_bound": 0.5,
+          "mean_confidence": 0.545201175553458,
+          "upper_bound": 0.6,
+          "weighted_gap": 0.00020681214533085497
+        },
+        {
+          "absolute_gap": 0.13604816604167858,
+          "count": 47,
+          "empirical_accuracy": 0.5106382978723404,
+          "index": 6,
+          "lower_bound": 0.6,
+          "mean_confidence": 0.646686463914019,
+          "upper_bound": 0.7,
+          "weighted_gap": 0.0012221452224692073
+        },
+        {
+          "absolute_gap": 0.0889226616474621,
+          "count": 57,
+          "empirical_accuracy": 0.6666666666666666,
+          "index": 7,
+          "lower_bound": 0.7,
+          "mean_confidence": 0.7555893283141287,
+          "upper_bound": 0.8,
+          "weighted_gap": 0.0009687675294161582
+        },
+        {
+          "absolute_gap": 0.22717733490161407,
+          "count": 78,
+          "empirical_accuracy": 0.6282051282051282,
+          "index": 8,
+          "lower_bound": 0.8,
+          "mean_confidence": 0.8553824631067423,
+          "upper_bound": 0.9,
+          "weighted_gap": 0.003386818066193788
+        },
+        {
+          "absolute_gap": 0.05801974518349029,
+          "count": 5015,
+          "empirical_accuracy": 0.9399800598205383,
+          "index": 9,
+          "lower_bound": 0.9,
+          "mean_confidence": 0.9979998050040286,
+          "upper_bound": 1.0,
+          "weighted_gap": 0.055613345201682686
+        }
+      ],
+      "shot_count": 4
+    },
+    {
+      "ece_10_bins": 0.06280722662760942,
+      "note": "nonzero-shot rows pool six demonstration seeds for visualization only",
+      "num_predictions": 5232,
+      "precision_condition": "bf16",
+      "reliability_bins": [
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 0,
+          "lower_bound": 0.0,
+          "mean_confidence": null,
+          "upper_bound": 0.1,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 1,
+          "lower_bound": 0.1,
+          "mean_confidence": null,
+          "upper_bound": 0.2,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 2,
+          "lower_bound": 0.2,
+          "mean_confidence": null,
+          "upper_bound": 0.3,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 3,
+          "lower_bound": 0.3,
+          "mean_confidence": null,
+          "upper_bound": 0.4,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 4,
+          "lower_bound": 0.4,
+          "mean_confidence": null,
+          "upper_bound": 0.5,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": 0.07979141357468394,
+          "count": 41,
+          "empirical_accuracy": 0.4634146341463415,
+          "index": 5,
+          "lower_bound": 0.5,
+          "mean_confidence": 0.5432060477210254,
+          "upper_bound": 0.6,
+          "weighted_gap": 0.0006252767501074238
+        },
+        {
+          "absolute_gap": 0.18183719946278465,
+          "count": 36,
+          "empirical_accuracy": 0.4722222222222222,
+          "index": 6,
+          "lower_bound": 0.6,
+          "mean_confidence": 0.6540594216850069,
+          "upper_bound": 0.7,
+          "weighted_gap": 0.0012511733907989771
+        },
+        {
+          "absolute_gap": 0.1564508163928986,
+          "count": 50,
+          "empirical_accuracy": 0.6,
+          "index": 7,
+          "lower_bound": 0.7,
+          "mean_confidence": 0.7564508163928986,
+          "upper_bound": 0.8,
+          "weighted_gap": 0.0014951339487088932
+        },
+        {
+          "absolute_gap": 0.2277783453464508,
+          "count": 72,
+          "empirical_accuracy": 0.625,
+          "index": 8,
+          "lower_bound": 0.8,
+          "mean_confidence": 0.8527783453464508,
+          "upper_bound": 0.9,
+          "weighted_gap": 0.0031345643855016166
+        },
+        {
+          "absolute_gap": 0.05852716886426401,
+          "count": 5033,
+          "empirical_accuracy": 0.9395986489171468,
+          "index": 9,
+          "lower_bound": 0.9,
+          "mean_confidence": 0.9981258177814109,
+          "upper_bound": 1.0,
+          "weighted_gap": 0.0563010781524925
+        }
+      ],
+      "shot_count": 8
+    },
+    {
+      "ece_10_bins": 0.0834762412336988,
+      "note": "nonzero-shot rows pool six demonstration seeds for visualization only",
+      "num_predictions": 872,
+      "precision_condition": "4bit_nf4",
+      "reliability_bins": [
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 0,
+          "lower_bound": 0.0,
+          "mean_confidence": null,
+          "upper_bound": 0.1,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 1,
+          "lower_bound": 0.1,
+          "mean_confidence": null,
+          "upper_bound": 0.2,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 2,
+          "lower_bound": 0.2,
+          "mean_confidence": null,
+          "upper_bound": 0.3,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 3,
+          "lower_bound": 0.3,
+          "mean_confidence": null,
+          "upper_bound": 0.4,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 4,
+          "lower_bound": 0.4,
+          "mean_confidence": null,
+          "upper_bound": 0.5,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": 0.3322678357362747,
+          "count": 8,
+          "empirical_accuracy": 0.875,
+          "index": 5,
+          "lower_bound": 0.5,
+          "mean_confidence": 0.5427321642637253,
+          "upper_bound": 0.6,
+          "weighted_gap": 0.003048328768222704
+        },
+        {
+          "absolute_gap": 0.19482838190518892,
+          "count": 13,
+          "empirical_accuracy": 0.46153846153846156,
+          "index": 6,
+          "lower_bound": 0.6,
+          "mean_confidence": 0.6563668434436505,
+          "upper_bound": 0.7,
+          "weighted_gap": 0.002904551565100294
+        },
+        {
+          "absolute_gap": 0.3695165102298443,
+          "count": 13,
+          "empirical_accuracy": 0.38461538461538464,
+          "index": 7,
+          "lower_bound": 0.7,
+          "mean_confidence": 0.7541318948452289,
+          "upper_bound": 0.8,
+          "weighted_gap": 0.005508847056178871
+        },
+        {
+          "absolute_gap": 0.27319557620928847,
+          "count": 26,
+          "empirical_accuracy": 0.5769230769230769,
+          "index": 8,
+          "lower_bound": 0.8,
+          "mean_confidence": 0.8501186531323653,
+          "upper_bound": 0.9,
+          "weighted_gap": 0.0081457396576164
+        },
+        {
+          "absolute_gap": 0.06858814173731309,
+          "count": 812,
+          "empirical_accuracy": 0.9273399014778325,
+          "index": 9,
+          "lower_bound": 0.9,
+          "mean_confidence": 0.9959280432151456,
+          "upper_bound": 1.0,
+          "weighted_gap": 0.06386877418658053
+        }
+      ],
+      "shot_count": 0
+    },
+    {
+      "ece_10_bins": 0.1035146679421631,
+      "note": "nonzero-shot rows pool six demonstration seeds for visualization only",
+      "num_predictions": 5232,
+      "precision_condition": "4bit_nf4",
+      "reliability_bins": [
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 0,
+          "lower_bound": 0.0,
+          "mean_confidence": null,
+          "upper_bound": 0.1,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 1,
+          "lower_bound": 0.1,
+          "mean_confidence": null,
+          "upper_bound": 0.2,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 2,
+          "lower_bound": 0.2,
+          "mean_confidence": null,
+          "upper_bound": 0.3,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 3,
+          "lower_bound": 0.3,
+          "mean_confidence": null,
+          "upper_bound": 0.4,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 4,
+          "lower_bound": 0.4,
+          "mean_confidence": null,
+          "upper_bound": 0.5,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": 0.10149110189758909,
+          "count": 101,
+          "empirical_accuracy": 0.45544554455445546,
+          "index": 5,
+          "lower_bound": 0.5,
+          "mean_confidence": 0.5569366464520445,
+          "upper_bound": 0.6,
+          "weighted_gap": 0.0019592127851025417
+        },
+        {
+          "absolute_gap": 0.21455759334040214,
+          "count": 91,
+          "empirical_accuracy": 0.43956043956043955,
+          "index": 6,
+          "lower_bound": 0.6,
+          "mean_confidence": 0.6541180329008417,
+          "upper_bound": 0.7,
+          "weighted_gap": 0.0037317930034358932
+        },
+        {
+          "absolute_gap": 0.21086927553017942,
+          "count": 180,
+          "empirical_accuracy": 0.5444444444444444,
+          "index": 7,
+          "lower_bound": 0.7,
+          "mean_confidence": 0.7553137199746238,
+          "upper_bound": 0.8,
+          "weighted_gap": 0.007254676910441953
+        },
+        {
+          "absolute_gap": 0.2429928346987693,
+          "count": 186,
+          "empirical_accuracy": 0.6129032258064516,
+          "index": 8,
+          "lower_bound": 0.8,
+          "mean_confidence": 0.8558960605052209,
+          "upper_bound": 0.9,
+          "weighted_gap": 0.008638506738144322
+        },
+        {
+          "absolute_gap": 0.09171165244723167,
+          "count": 4674,
+          "empirical_accuracy": 0.9020111253744116,
+          "index": 9,
+          "lower_bound": 0.9,
+          "mean_confidence": 0.9937227778216433,
+          "upper_bound": 1.0,
+          "weighted_gap": 0.08193047850503839
+        }
+      ],
+      "shot_count": 1
+    },
+    {
+      "ece_10_bins": 0.0643191976580962,
+      "note": "nonzero-shot rows pool six demonstration seeds for visualization only",
+      "num_predictions": 5232,
+      "precision_condition": "4bit_nf4",
+      "reliability_bins": [
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 0,
+          "lower_bound": 0.0,
+          "mean_confidence": null,
+          "upper_bound": 0.1,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 1,
+          "lower_bound": 0.1,
+          "mean_confidence": null,
+          "upper_bound": 0.2,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 2,
+          "lower_bound": 0.2,
+          "mean_confidence": null,
+          "upper_bound": 0.3,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 3,
+          "lower_bound": 0.3,
+          "mean_confidence": null,
+          "upper_bound": 0.4,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 4,
+          "lower_bound": 0.4,
+          "mean_confidence": null,
+          "upper_bound": 0.5,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": 0.055152716356165254,
+          "count": 85,
+          "empirical_accuracy": 0.49411764705882355,
+          "index": 5,
+          "lower_bound": 0.5,
+          "mean_confidence": 0.5492703634149888,
+          "upper_bound": 0.6,
+          "weighted_gap": 0.0008960208123612474
+        },
+        {
+          "absolute_gap": 0.02772638924194104,
+          "count": 66,
+          "empirical_accuracy": 0.6212121212121212,
+          "index": 6,
+          "lower_bound": 0.6,
+          "mean_confidence": 0.6489385104540623,
+          "upper_bound": 0.7,
+          "weighted_gap": 0.0003497594973180636
+        },
+        {
+          "absolute_gap": 0.23344819095669955,
+          "count": 98,
+          "empirical_accuracy": 0.5204081632653061,
+          "index": 7,
+          "lower_bound": 0.7,
+          "mean_confidence": 0.7538563542220057,
+          "upper_bound": 0.8,
+          "weighted_gap": 0.004372691650182828
+        },
+        {
+          "absolute_gap": 0.24335802531411466,
+          "count": 141,
+          "empirical_accuracy": 0.6170212765957447,
+          "index": 8,
+          "lower_bound": 0.8,
+          "mean_confidence": 0.8603793019098593,
+          "upper_bound": 0.9,
+          "weighted_gap": 0.006558387150093686
+        },
+        {
+          "absolute_gap": 0.05634215515982455,
+          "count": 4842,
+          "empirical_accuracy": 0.939487814952499,
+          "index": 9,
+          "lower_bound": 0.9,
+          "mean_confidence": 0.9958299701123235,
+          "upper_bound": 1.0,
+          "weighted_gap": 0.05214233854814038
+        }
+      ],
+      "shot_count": 2
+    },
+    {
+      "ece_10_bins": 0.051748707377855876,
+      "note": "nonzero-shot rows pool six demonstration seeds for visualization only",
+      "num_predictions": 5232,
+      "precision_condition": "4bit_nf4",
+      "reliability_bins": [
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 0,
+          "lower_bound": 0.0,
+          "mean_confidence": null,
+          "upper_bound": 0.1,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 1,
+          "lower_bound": 0.1,
+          "mean_confidence": null,
+          "upper_bound": 0.2,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 2,
+          "lower_bound": 0.2,
+          "mean_confidence": null,
+          "upper_bound": 0.3,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 3,
+          "lower_bound": 0.3,
+          "mean_confidence": null,
+          "upper_bound": 0.4,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 4,
+          "lower_bound": 0.4,
+          "mean_confidence": null,
+          "upper_bound": 0.5,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": 0.036663841782954676,
+          "count": 57,
+          "empirical_accuracy": 0.5964912280701754,
+          "index": 5,
+          "lower_bound": 0.5,
+          "mean_confidence": 0.5598273862872207,
+          "upper_bound": 0.6,
+          "weighted_gap": 0.0003994340561216393
+        },
+        {
+          "absolute_gap": 0.06552058458328247,
+          "count": 50,
+          "empirical_accuracy": 0.72,
+          "index": 6,
+          "lower_bound": 0.6,
+          "mean_confidence": 0.6544794154167175,
+          "upper_bound": 0.7,
+          "weighted_gap": 0.0006261523756047636
+        },
+        {
+          "absolute_gap": 0.04909445282439118,
+          "count": 71,
+          "empirical_accuracy": 0.704225352112676,
+          "index": 7,
+          "lower_bound": 0.7,
+          "mean_confidence": 0.7533198049370672,
+          "upper_bound": 0.8,
+          "weighted_gap": 0.0006662282397805377
+        },
+        {
+          "absolute_gap": 0.28349364192589466,
+          "count": 92,
+          "empirical_accuracy": 0.5760869565217391,
+          "index": 8,
+          "lower_bound": 0.8,
+          "mean_confidence": 0.8595805984476338,
+          "upper_bound": 0.9,
+          "weighted_gap": 0.004984979942122001
+        },
+        {
+          "absolute_gap": 0.04752443522419092,
+          "count": 4962,
+          "empirical_accuracy": 0.9494155582426441,
+          "index": 9,
+          "lower_bound": 0.9,
+          "mean_confidence": 0.996939993466835,
+          "upper_bound": 1.0,
+          "weighted_gap": 0.04507191276422694
+        }
+      ],
+      "shot_count": 4
+    },
+    {
+      "ece_10_bins": 0.056570418532197325,
+      "note": "nonzero-shot rows pool six demonstration seeds for visualization only",
+      "num_predictions": 5232,
+      "precision_condition": "4bit_nf4",
+      "reliability_bins": [
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 0,
+          "lower_bound": 0.0,
+          "mean_confidence": null,
+          "upper_bound": 0.1,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 1,
+          "lower_bound": 0.1,
+          "mean_confidence": null,
+          "upper_bound": 0.2,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 2,
+          "lower_bound": 0.2,
+          "mean_confidence": null,
+          "upper_bound": 0.3,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 3,
+          "lower_bound": 0.3,
+          "mean_confidence": null,
+          "upper_bound": 0.4,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": null,
+          "count": 0,
+          "empirical_accuracy": null,
+          "index": 4,
+          "lower_bound": 0.4,
+          "mean_confidence": null,
+          "upper_bound": 0.5,
+          "weighted_gap": 0.0
+        },
+        {
+          "absolute_gap": 0.1417540297621772,
+          "count": 42,
+          "empirical_accuracy": 0.40476190476190477,
+          "index": 5,
+          "lower_bound": 0.5,
+          "mean_confidence": 0.546515934524082,
+          "upper_bound": 0.6,
+          "weighted_gap": 0.0011379337251550925
+        },
+        {
+          "absolute_gap": 0.159191962252272,
+          "count": 47,
+          "empirical_accuracy": 0.48936170212765956,
+          "index": 6,
+          "lower_bound": 0.6,
+          "mean_confidence": 0.6485536643799316,
+          "upper_bound": 0.7,
+          "weighted_gap": 0.0014300501196209449
+        },
+        {
+          "absolute_gap": 0.2088494587403078,
+          "count": 52,
+          "empirical_accuracy": 0.5384615384615384,
+          "index": 7,
+          "lower_bound": 0.7,
+          "mean_confidence": 0.7473109972018462,
+          "upper_bound": 0.8,
+          "weighted_gap": 0.002075720920201836
+        },
+        {
+          "absolute_gap": 0.21771984279155732,
+          "count": 100,
+          "empirical_accuracy": 0.64,
+          "index": 8,
+          "lower_bound": 0.8,
+          "mean_confidence": 0.8577198427915573,
+          "upper_bound": 0.9,
+          "weighted_gap": 0.004161311979960958
+        },
+        {
+          "absolute_gap": 0.050071845752541866,
+          "count": 4991,
+          "empirical_accuracy": 0.9471047886195151,
+          "index": 9,
+          "lower_bound": 0.9,
+          "mean_confidence": 0.997176634372057,
+          "upper_bound": 1.0,
+          "weighted_gap": 0.047765401787258494
+        }
+      ],
+      "shot_count": 8
+    }
+  ]
+}

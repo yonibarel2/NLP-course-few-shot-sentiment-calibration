@@ -8,6 +8,7 @@ env/
 .env
 
 .pytest_cache/
+.test-tmp*/
 .mypy_cache/
 .ruff_cache/
 

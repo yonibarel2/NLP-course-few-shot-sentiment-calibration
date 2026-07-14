@@ -1,0 +1,252 @@
+{
+  "aggregate_metrics": [
+    {
+      "mean_accuracy": 0.8772935779816514,
+      "mean_ece_10_bins": 0.1066285075124251,
+      "num_demonstration_selections": 1,
+      "precision_condition": "bf16",
+      "shot_count": 0,
+      "standard_deviation_definition": null,
+      "std_accuracy": null,
+      "std_ece_10_bins": null
+    },
+    {
+      "mean_accuracy": 0.8442278287461774,
+      "mean_ece_10_bins": 0.12639907969657435,
+      "num_demonstration_selections": 6,
+      "precision_condition": "bf16",
+      "shot_count": 1,
+      "standard_deviation_definition": "sample standard deviation (n-1)",
+      "std_accuracy": 0.06814828354659047,
+      "std_ece_10_bins": 0.05777061465887567
+    },
+    {
+      "mean_accuracy": 0.8946865443425076,
+      "mean_ece_10_bins": 0.08793538279079512,
+      "num_demonstration_selections": 6,
+      "precision_condition": "bf16",
+      "shot_count": 2,
+      "standard_deviation_definition": "sample standard deviation (n-1)",
+      "std_accuracy": 0.03174279334650874,
+      "std_ece_10_bins": 0.02581716364737476
+    },
+    {
+      "mean_accuracy": 0.9256498470948012,
+      "mean_ece_10_bins": 0.06270200648666888,
+      "num_demonstration_selections": 6,
+      "precision_condition": "bf16",
+      "shot_count": 4,
+      "standard_deviation_definition": "sample standard deviation (n-1)",
+      "std_accuracy": 0.008746224150342185,
+      "std_ece_10_bins": 0.005626908351961322
+    },
+    {
+      "mean_accuracy": 0.9250764525993884,
+      "mean_ece_10_bins": 0.06359186244484845,
+      "num_demonstration_selections": 6,
+      "precision_condition": "bf16",
+      "shot_count": 8,
+      "standard_deviation_definition": "sample standard deviation (n-1)",
+      "std_accuracy": 0.00682957536211845,
+      "std_ece_10_bins": 0.005703663553107122
+    },
+    {
+      "mean_accuracy": 0.9013761467889908,
+      "mean_ece_10_bins": 0.0834762412336988,
+      "num_demonstration_selections": 1,
+      "precision_condition": "4bit_nf4",
+      "shot_count": 0,
+      "standard_deviation_definition": null,
+      "std_accuracy": null,
+      "std_ece_10_bins": null
+    },
+    {
+      "mean_accuracy": 0.8627675840978594,
+      "mean_ece_10_bins": 0.10446001585880554,
+      "num_demonstration_selections": 6,
+      "precision_condition": "4bit_nf4",
+      "shot_count": 1,
+      "standard_deviation_definition": "sample standard deviation (n-1)",
+      "std_accuracy": 0.09622828443820941,
+      "std_ece_10_bins": 0.08196068054184791
+    },
+    {
+      "mean_accuracy": 0.9116972477064221,
+      "mean_ece_10_bins": 0.06640611822497584,
+      "num_demonstration_selections": 6,
+      "precision_condition": "4bit_nf4",
+      "shot_count": 2,
+      "standard_deviation_definition": "sample standard deviation (n-1)",
+      "std_accuracy": 0.023299862567340002,
+      "std_ece_10_bins": 0.015753903628743685
+    },
+    {
+      "mean_accuracy": 0.9334862385321102,
+      "mean_ece_10_bins": 0.05358832929887177,
+      "num_demonstration_selections": 6,
+      "precision_condition": "4bit_nf4",
+      "shot_count": 4,
+      "standard_deviation_definition": "sample standard deviation (n-1)",
+      "std_accuracy": 0.012913475468127737,
+      "std_ece_10_bins": 0.010377081495171178
+    },
+    {
+      "mean_accuracy": 0.9287079510703364,
+      "mean_ece_10_bins": 0.05684767375253027,
+      "num_demonstration_selections": 6,
+      "precision_condition": "4bit_nf4",
+      "shot_count": 8,
+      "standard_deviation_definition": "sample standard deviation (n-1)",
+      "std_accuracy": 0.006584473187215354,
+      "std_ece_10_bins": 0.00679761289514734
+    }
+  ],
+  "condition_checkpoints": [
+    "results/raw/full_predictions_bf16.jsonl",
+    "results/raw/full_predictions_4bit_nf4.jsonl"
+  ],
+  "conditions": [
+    {
+      "elapsed_seconds_including_model_load": 238.84970321506262,
+      "peak_gpu_memory_bytes": 6464957952,
+      "precision_condition": "bf16",
+      "quantized": false
+    },
+    {
+      "elapsed_seconds_including_model_load": 307.9934532865882,
+      "peak_gpu_memory_bytes": 2487928320,
+      "precision_condition": "4bit_nf4",
+      "quantized": true
+    }
+  ],
+  "experiment": {
+    "batch_size": 8,
+    "demonstration_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "ece_bins": 10,
+    "quantization_gap_definition": "4-bit metric minus BF16 metric",
+    "shot_counts": [
+      0,
+      1,
+      2,
+      4,
+      8
+    ],
+    "total_predictions": 43600,
+    "validation_examples": 872
+  },
+  "git_commit": "e66dad00ad3f72e97fb4f664cb181232ca2a3d5d",
+  "hardware": {
+    "bf16_supported": true,
+    "compute_capability": "8.9",
+    "cuda_runtime": "12.8",
+    "driver_version": "550.127.08",
+    "name": "NVIDIA L40",
+    "total_memory_bytes": 47576711168
+  },
+  "inputs": {
+    "demonstration_manifest_sha256": "172a26675a4eb3ee426759345b01b0c13150a64156680f08e39cbeba25825862",
+    "pilot_summary_sha256": "a4dcff111b05339525a5d24c3cdfbab5b622cdcda900c079b6c77ff2e641e45e",
+    "split_manifest_sha256": "c1b612fd870c40923d58b5b31de230ef2a4003fe6497cdc6e001c2e8c1d200b8",
+    "tokenization_report_sha256": "14d4c139ce5b21fc8e569e5bb08e3043ab5fc6370adcbd9edbfe77cc33dba6df"
+  },
+  "model": {
+    "name": "Qwen/Qwen2.5-3B-Instruct",
+    "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+    "tokenizer_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1"
+  },
+  "outputs": {
+    "results/figures/accuracy_by_shot.png": "d63936bffbc8525492051701ceff215dbfde399026040efabc0151c06c1f17df",
+    "results/figures/ece_by_shot.png": "d692ab98b0d67e9b97153587e8704c0dac246cf2473d5d7728b9905bb9e3738b",
+    "results/figures/paired_quantization_gaps.png": "a195f80566eea46a290d5cfcfd3790c02b282acc2c41b2e16e3960faa1ad8eb5",
+    "results/figures/reliability_4bit_nf4_0shot.png": "21eb0cd227bc64e84bf7aeef140e5f4737dc5e8e87dca2ec3572cc570084684d",
+    "results/figures/reliability_4bit_nf4_1shot.png": "38c485e20addf7cafca9908119e6f6d74eef2cbb08055f33ba143f30ecbf8ead",
+    "results/figures/reliability_4bit_nf4_2shot.png": "492a635d4a12c78f47899bd152050661daa8fb8958dbebd7ad9b3af051afec3e",
+    "results/figures/reliability_4bit_nf4_4shot.png": "21e7d196fd62e8e87177cf36e9df765468d321ef6c5cc764c46934b73e3b5f69",
+    "results/figures/reliability_4bit_nf4_8shot.png": "e0f431d8ffa676302d307966a1da682e3edd80dc08cac92d28ff108a0bbd68e3",
+    "results/figures/reliability_bf16_0shot.png": "02ae94d86e65596b431e4d9c48286fa9f30254f54654c18e0f506ba19696e935",
+    "results/figures/reliability_bf16_1shot.png": "8340cf0810eb92a4f48e7d5f29d5edf0485a4637eaf83852515eacbf7206918e",
+    "results/figures/reliability_bf16_2shot.png": "b5b212f4d62ad85a21f4db1672e6fa684966041cfb430661db11cc45aadf7a74",
+    "results/figures/reliability_bf16_4shot.png": "77565d621d4ffc27ab0f3ae69b68727cd2ee96fed2cc8b26f2c08604206ca016",
+    "results/figures/reliability_bf16_8shot.png": "4fe6f4f7689d4a30e4b8e4df1980fdacbf5346fde79c36d8bfc9a20deec0ed11",
+    "results/raw/full_predictions.jsonl": "a153bce5da77d1d25045d4fca888c40622299f2a64e0dd296e80df938d3c7e50",
+    "results/tables/full_aggregate_metrics.csv": "b83f7bf4bdbbdffdb5bfab429da0f961f680ce6d91fc144f08e12bbe964391ad",
+    "results/tables/full_condition_metrics.csv": "1e0e469ca8c7c2d04444d6c63bcf50b28e043fbd82e092f57859240736c4c9e9",
+    "results/tables/full_condition_metrics.json": "44bb11814d44b09393b468d5392fd294dc6229dfa84c320b03f5082319fc8f2b",
+    "results/tables/paired_gap_summary.csv": "ce0a5c404b123b5df08239c8f28c06817931ea45617f15bdbe70b84ab3e2d214",
+    "results/tables/paired_seed_gaps.csv": "43a21a98792b057724e4270c2702ae5072340487ced1ae37e4001907e0f63133",
+    "results/tables/pooled_reliability_bins.json": "c4f0f9985d64d7979071dc1aee2f65848e553ec5981639f4d125bc07dbc97d54"
+  },
+  "paired_gap_summary": [
+    {
+      "mean_accuracy_gap_4bit_minus_bf16": 0.02408256880733939,
+      "mean_ece_gap_4bit_minus_bf16": -0.023152266278726297,
+      "num_pairs": 1,
+      "shot_count": 0,
+      "std_accuracy_gap": null,
+      "std_ece_gap": null
+    },
+    {
+      "mean_accuracy_gap_4bit_minus_bf16": 0.018539755351681952,
+      "mean_ece_gap_4bit_minus_bf16": -0.021939063837768804,
+      "num_pairs": 6,
+      "shot_count": 1,
+      "std_accuracy_gap": 0.04467720751716221,
+      "std_ece_gap": 0.03468407947852723
+    },
+    {
+      "mean_accuracy_gap_4bit_minus_bf16": 0.017010703363914397,
+      "mean_ece_gap_4bit_minus_bf16": -0.02152926456581929,
+      "num_pairs": 6,
+      "shot_count": 2,
+      "std_accuracy_gap": 0.0116818721277144,
+      "std_ece_gap": 0.012144249511284474
+    },
+    {
+      "mean_accuracy_gap_4bit_minus_bf16": 0.00783639143730889,
+      "mean_ece_gap_4bit_minus_bf16": -0.009113677187797107,
+      "num_pairs": 6,
+      "shot_count": 4,
+      "std_accuracy_gap": 0.01328329537759481,
+      "std_ece_gap": 0.008868455092275651
+    },
+    {
+      "mean_accuracy_gap_4bit_minus_bf16": 0.0036314984709480136,
+      "mean_ece_gap_4bit_minus_bf16": -0.00674418869231818,
+      "num_pairs": 6,
+      "shot_count": 8,
+      "std_accuracy_gap": 0.005495819980527748,
+      "std_ece_gap": 0.0037193653516825655
+    }
+  ],
+  "schema_version": 1,
+  "software": {
+    "packages": {
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.49.2",
+      "datasets": "5.0.0",
+      "huggingface-hub": "1.23.0",
+      "numpy": "2.1.2",
+      "pyyaml": "6.0.3",
+      "torch": "2.8.0+cu128",
+      "transformers": "5.13.1"
+    },
+    "python": "3.12.3"
+  },
+  "status": "passed",
+  "validation_checks": {
+    "complete_condition_coverage": true,
+    "complete_validation_set_per_condition": true,
+    "identical_prompts_across_precision_conditions": true,
+    "paired_metric_comparison": true,
+    "pilot_passed_before_full_run": true,
+    "predictions_match_larger_probability": true,
+    "probabilities_sum_to_one": true
+  }
+}

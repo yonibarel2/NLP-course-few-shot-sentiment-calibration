@@ -98,7 +98,9 @@ Use:
 
 This is the only model used in the main experiment.
 
-The exact model revision and tokenizer revision must be pinned after the pilot confirms that the model works in the university environment.
+The pilot pinned both the model and tokenizer to revision
+`aa8e72537993ba99e69dfaafa59ed015b17504d1`. The pilot and full experiment
+used that exact revision.
 
 ## Precision Conditions
 
@@ -119,7 +121,7 @@ Expected configuration:
 ```yaml
 model:
   name: Qwen/Qwen2.5-3B-Instruct
-  revision: null
+  revision: aa8e72537993ba99e69dfaafa59ed015b17504d1
 
 precision:
   condition_name: bf16
@@ -146,7 +148,7 @@ Expected configuration:
 ```yaml
 model:
   name: Qwen/Qwen2.5-3B-Instruct
-  revision: null
+  revision: aa8e72537993ba99e69dfaafa59ed015b17504d1
 
 precision:
   condition_name: 4bit_nf4
@@ -389,7 +391,20 @@ For ECE:
 - a positive gap means 4-bit calibration is worse;
 - a negative gap means 4-bit calibration is better.
 
-A paired hierarchical bootstrap with 1,000 samples is planned for the final analysis, but it should only be implemented after the main inference and metric pipeline has passed the pilot.
+After the pilot and full inference pipeline passed, the final analysis used a
+paired hierarchical bootstrap with 1,000 samples, seed `42`, and 95% percentile
+intervals. Each replicate resamples the 872 evaluation examples once and the
+six demonstration seeds once. The same draws are applied to all precision and
+shot conditions. This preserves precision pairing, shared evaluation examples,
+and the nested demonstration identities across shot counts.
+
+In addition to the gap at each shot count, the analysis calculates the paired
+shot-effect interaction:
+
+`(4-bit - BF16 gap at k shots) - (4-bit - BF16 gap at 0 shots)`
+
+for `k` in `1, 2, 4, 8`. This directly measures whether the effect of adding
+demonstrations differs between precision conditions.
 
 ## Pilot Experiment
 
@@ -414,11 +429,11 @@ The pilot should confirm:
 - output records contain all required fields;
 - runtime and memory requirements are manageable.
 
-The exact model and tokenizer revisions should be pinned after this pilot.
+The pilot passed and pinned the model and tokenizer revisions stated above.
 
 ## Full Experiment
 
-After the pilot succeeds:
+The pilot and full experiment completed successfully. The full experiment:
 
 1. evaluate BF16 on all 872 validation examples;
 2. evaluate 4-bit NF4 on the same examples;
@@ -430,7 +445,11 @@ After the pilot succeeds:
 8. calculate paired precision gaps;
 9. produce final tables and figures.
 
-Do not run the full experiment before validating the pilot outputs.
+The run produced 43,600 validated predictions. Output coverage, probability
+normalization, prediction consistency, prompt identity across precision
+conditions, and file hashes were checked before analysis. Aggregated results
+and bootstrap intervals are recorded under `results/tables/`; final figures
+are under `results/figures/`.
 
 ## Reproducibility Requirements
 
@@ -459,7 +478,7 @@ Record:
 
 The repository should contain enough information to reproduce all reported tables and figures.
 
-## Planned Implementation Modules
+## Implemented Modules
 
 Suggested responsibilities:
 
@@ -495,15 +514,19 @@ Suggested responsibilities:
 
 - accuracy;
 - ECE;
-- reliability-bin statistics;
-- paired metric gaps.
+- reliability-bin statistics.
 
-### `src/plots.py`
+### `src/reporting.py`
 
-- reliability diagrams;
-- accuracy plots;
-- ECE plots;
-- final paper figures.
+- aggregate accuracy and ECE across demonstration selections;
+- paired metric gaps;
+- reliability diagrams and final figures.
+
+### `src/bootstrap.py`
+
+- approved paired hierarchical resampling;
+- percentile confidence intervals;
+- shot-count interaction estimates.
 
 ### `scripts/prepare_sst2.py`
 
@@ -516,6 +539,12 @@ Suggested responsibilities:
 ### `scripts/run_full_experiment.py`
 
 - run the complete experiment after pilot validation.
+
+### `scripts/run_bootstrap_analysis.py`
+
+- validate the completed prediction-file hash;
+- run the final paired uncertainty analysis;
+- generate bootstrap tables and the interaction figure.
 
 ## Methodological Constraints
 

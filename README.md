@@ -467,7 +467,7 @@ two precision conditions. BF16 peak allocated GPU memory was approximately
 metrics are stored only as pipeline checks and are not treated as final
 experimental results.
 
-The full experiment may now run because the pilot passed.
+The full experiment completed successfully after the pilot passed.
 
 Run the complete paired experiment with:
 
@@ -483,27 +483,72 @@ accuracy/ECE, means and sample standard deviations across seeds, paired
 CSV tables, and accuracy, ECE, gap, and reliability figures. Per-condition
 metrics remain separate; seed pooling is used only for reliability diagrams.
 
+Run the approved 1,000-sample paired hierarchical bootstrap with:
+
+```text
+python scripts/run_bootstrap_analysis.py
+```
+
+The bootstrap uses seed `42` and 95% percentile intervals. It resamples the
+evaluation examples and demonstration selections with replacement, using the
+same draws across both precision conditions and all shot counts. This preserves
+the paired design. It also estimates the interaction between quantization and
+adding `1`, `2`, `4`, or `8` demonstrations relative to 0-shot.
+
+## Final Results
+
+The full experiment and bootstrap both passed all programmed validation
+checks. The principal descriptive results are:
+
+| Shots | BF16 accuracy | 4-bit accuracy | BF16 ECE | 4-bit ECE |
+|---:|---:|---:|---:|---:|
+| 0 | 0.8773 | 0.9014 | 0.1066 | 0.0835 |
+| 1 | 0.8442 | 0.8628 | 0.1264 | 0.1045 |
+| 2 | 0.8947 | 0.9117 | 0.0879 | 0.0664 |
+| 4 | 0.9256 | 0.9335 | 0.0627 | 0.0536 |
+| 8 | 0.9251 | 0.9287 | 0.0636 | 0.0568 |
+
+Nonzero-shot entries are means across the six demonstration selections. In
+this experiment, 4-bit NF4 had higher mean accuracy and lower mean ECE at every
+shot count. However, both advantages became smaller as shot count increased.
+Relative to 0-shot, the 8-shot quantization interaction was `-0.0205` for
+accuracy (95% CI `[-0.0342, -0.0080]`) and `+0.0164` for ECE (95% CI
+`[0.0035, 0.0294]`). These intervals provide evidence that quantization changed
+the effect of adding eight demonstrations: its initial advantage narrowed at
+eight shots.
+
+These are 95% percentile intervals without multiple-comparison correction.
+Interpretation is limited to this model, dataset, quantization configuration,
+prompt, six demonstration selections, and fixed 10-bin ECE estimator. See
+[`docs/results_summary.md`](docs/results_summary.md) for the complete concise
+interpretation and [`results/tables/bootstrap_summary.json`](results/tables/bootstrap_summary.json)
+for exact values.
+
 ## Output Format
 
-Each prediction will be saved with fields similar to:
+Each prediction is saved with the following fields:
 
 ```text
 model_name
 model_revision
 tokenizer_revision
-precision
+precision_condition
 shot_count
-seed
-example_id
-true_label
+demonstration_seed
+demonstration_identifiers
+evaluation_example_identifier
+gold_label
 predicted_label
+negative_log_score
+positive_log_score
 negative_probability
 positive_probability
-confidence
-correct
+selected_label_confidence
+correctness
+prompt_sha256
 ```
 
-The final repository will also contain:
+The final repository contains:
 
 - aggregated result tables;
 - accuracy figures;
@@ -514,7 +559,7 @@ The final repository will also contain:
 
 ## Reproducibility
 
-The project will record:
+The completed experiment records:
 
 - exact model revision;
 - exact tokenizer revision;
@@ -528,6 +573,19 @@ The project will record:
 - raw prediction outputs.
 
 Model weights, Hugging Face caches, virtual environments, secrets, and large temporary files will not be committed to the repository.
+The 30.9 MB raw prediction JSONL is hash-verified and retained outside Git
+under `results/raw/`; it can be regenerated with the documented full-run
+command. Aggregated tables and figures are committed.
+
+The validated full run used an NVIDIA L40 (46 GB), driver `550.127.08`, CUDA
+runtime `12.8`, Python `3.12.3`, PyTorch `2.8.0+cu128`, Transformers `5.13.1`,
+Datasets `5.0.0`, and bitsandbytes `0.49.2`. Exact metadata and input/output
+hashes are stored in `results/tables/full_summary.json`. To reproduce from a
+fresh checkout, install `requirements.txt`, run the data, demonstration, and
+verbalizer commands earlier in this README, then run the pilot, full experiment,
+and bootstrap commands in that order. The pilot and full experiment require a
+BF16-capable NVIDIA GPU; data preparation, metrics, and bootstrap analysis are
+CPU-only.
 
 ## Status
 
@@ -546,7 +604,7 @@ Model weights, Hugging Face caches, virtual environments, secrets, and large tem
 - [x] Pilot pipeline implemented
 - [x] Pilot experiment completed
 - [x] Full experiment pipeline implemented
-- [ ] Full experiment completed
-- [ ] Results analyzed
-- [ ] Final figures generated
-- [ ] Reproducibility instructions finalized
+- [x] Full experiment completed
+- [x] Results analyzed with paired hierarchical bootstrap
+- [x] Final tables and figures generated
+- [x] Reproducibility instructions finalized
