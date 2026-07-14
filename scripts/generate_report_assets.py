@@ -55,7 +55,7 @@ def _configure_style() -> None:
 def _performance_figure(aggregates: list[dict[str, str]]) -> Path:
     figure, axes = plt.subplots(1, 2, figsize=(6.30, 2.45))
     settings = (
-        ("mean_accuracy", "std_accuracy", "Accuracy", (0.80, 0.96)),
+        ("mean_accuracy", "std_accuracy", "Accuracy", (0.75, 0.96)),
         ("mean_ece_10_bins", "std_ece_10_bins", "ECE (10 bins; lower is better)", (0.0, 0.15)),
     )
     for axis, (metric, spread, ylabel, ylim) in zip(axes, settings, strict=True):
