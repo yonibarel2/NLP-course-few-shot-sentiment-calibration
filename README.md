@@ -419,6 +419,23 @@ Before running the full experiment, the pipeline will be tested using:
 - one demonstration selection;
 - both precision conditions.
 
+Run the fixed pilot with:
+
+```text
+python scripts/run_pilot.py
+```
+
+The runner uses the first 20 validation examples without tuning, evaluates
+0-shot and 2-shot prompts with demonstration seed 0, and loads the exact same
+checkpoint first in BF16 and then in 4-bit NF4. It scores complete verbalizer
+sequences from model logits, applies a restricted two-label softmax, writes
+the required per-prediction fields to
+`results/raw/pilot_predictions.jsonl`, and saves validation metadata to
+`results/tables/pilot_summary.json`. The script fails unless probabilities,
+predictions, prompt identity across precision conditions, dataset
+fingerprints, model/tokenizer revisions, and the approved quantization
+configuration all validate.
+
 The pilot will verify that:
 
 - the model loads successfully;
@@ -496,7 +513,7 @@ Model weights, Hugging Face caches, virtual environments, secrets, and large tem
 - [x] Demonstration sets generated
 - [x] Prompt construction implemented
 - [x] Label tokenization validated
-- [ ] Pilot pipeline implemented
+- [x] Pilot pipeline implemented
 - [ ] Pilot experiment completed
 - [ ] Full experiment completed
 - [ ] Results analyzed

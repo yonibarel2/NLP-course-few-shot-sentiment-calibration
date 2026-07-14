@@ -11,6 +11,63 @@ LABEL_VERBALIZERS: dict[int, str] = {0: "negative", 1: "positive"}
 TOKENIZATION_SCHEMA_VERSION = 1
 
 
+def load_tokenizer(model_name: str, *, revision: str) -> Any:
+    """Load the fixed tokenizer at an immutable model revision."""
+
+    try:
+        from transformers import AutoTokenizer
+    except ImportError as error:
+        raise RuntimeError("transformers is required to load the tokenizer") from error
+    tokenizer = AutoTokenizer.from_pretrained(
+        model_name,
+        revision=revision,
+        use_fast=True,
+    )
+    if tokenizer.pad_token_id is None:
+        if tokenizer.eos_token_id is None:
+            raise ValueError("tokenizer defines neither a padding nor EOS token")
+        tokenizer.pad_token = tokenizer.eos_token
+    tokenizer.padding_side = "right"
+    return tokenizer
+
+
+def load_causal_lm(
+    model_name: str,
+    *,
+    revision: str,
+    quantized: bool,
+) -> Any:
+    """Load Qwen in BF16 or the approved 4-bit NF4 configuration."""
+
+    try:
+        import torch
+        from transformers import AutoModelForCausalLM, BitsAndBytesConfig
+    except ImportError as error:
+        raise RuntimeError(
+            "torch, transformers, accelerate, and bitsandbytes are required"
+        ) from error
+    if not torch.cuda.is_available():
+        raise RuntimeError("CUDA is required for the model experiment")
+
+    load_kwargs: dict[str, Any] = {
+        "revision": revision,
+        "dtype": torch.bfloat16,
+        "device_map": {"": 0},
+        "low_cpu_mem_usage": True,
+        "attn_implementation": "sdpa",
+    }
+    if quantized:
+        load_kwargs["quantization_config"] = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_quant_type="nf4",
+            bnb_4bit_compute_dtype=torch.bfloat16,
+            bnb_4bit_use_double_quant=False,
+        )
+    model = AutoModelForCausalLM.from_pretrained(model_name, **load_kwargs)
+    model.eval()
+    return model
+
+
 def render_scoring_prefix(tokenizer: Any, prompt: str) -> str:
     """Apply the tokenizer's chat template through the assistant answer prefix."""
 
