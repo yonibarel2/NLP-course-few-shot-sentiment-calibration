@@ -11,6 +11,9 @@ env/
 .test-tmp*/
 .mypy_cache/
 .ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
 
 .cache/
 huggingface/
@@ -22,8 +25,19 @@ data/processed/
 results/raw/
 
 *.log
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+*.synctex.gz
 .DS_Store
-.vscode/settings.json
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+/.agents/
 
 # Local paper, working instructions, and course materials are not submission files.
 AGENTS.md
@@ -35,4 +49,4 @@ AGENTS.md
 
 # Locally retained paper exports and import/export archives.
 /*.pdf
-/*.zip
+*.zip
